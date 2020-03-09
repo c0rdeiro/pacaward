@@ -19,7 +19,7 @@ Although there are many CLO applications like the ones presented before, all app
 <h3>Primary scenario</h3>
 <p>
 The user sees a list of locations with offers available, links new cards, sees a list of his linked cards and the transactions he has made.
-
+<ol>
 <li>When entering the app, the user has a list of all offers available;</li>
 <li>By clicking on the Profile user is redirected to profile screen, where by display is showed the “Cards” sections;</li>
 <li>By clicking in the plus sign to add a new card and is redirected to add card page;</li>
@@ -27,6 +27,7 @@ The user sees a list of locations with offers available, links new cards, sees a
 <li>Is redirected to the “Cards” section where the new card is already visible;</li>
 <li>User selects “Transactions” section;</li>
 <li>It is displayed a list of the transactions made by the user.</li>
+</ol>
 </p>
 <h3>Secondary scenarios</h3>
 
