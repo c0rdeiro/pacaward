@@ -1,6 +1,6 @@
 # pacaward
 
-<h2>Context:</h2>
+<h2>Context</h2>
 <p>
 Consumers often have the problem of receiving discount offers for things they do not really need. Moreover, retailers also have problems when it comes to targeting the right customers for their discounts.
 Card-linked offers (CLO) is a Online-to-Offline (O2O) system, meaning the online marketing leads to an offline (physical) experience, helping mitigate the problems for both entities. Firstly by getting consumers behavior data (with their consent), analysing it, enabling the retailers to make specific marketing campaigns. Secondly by having personalized offers to each consumer, applying the discounts automatically on each purchase just by using the credit or debit card, discarding the need for coupons, promo codes or membership cards.
