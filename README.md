@@ -14,7 +14,9 @@ CLO is a booming market as a result of the shift to cashless (growth of 20% per 
 </ul>
 Although there are many CLO applications like the ones presented before, all applications differ in their partners, meaning there will be distinct retailers, therefore different offers. Apps also differ in the way they offer their discounts, some work with direct cashback, others use a points system forcing the users to spend it on other offers.
 </p>
-<h2>Primary scenario:</h2>
+
+<h2>Scenarios</h2>
+<h3>Primary scenario:</h3>
 <p>
 The user sees a list of locations with offers available, links new cards, sees a list of his linked cards and the transactions he has made.
 
@@ -26,13 +28,13 @@ Is redirected to the “Cards” section where the new card is already visible;
 User selects “Transactions” section;
 It is displayed a list of the transactions made by the user.
 </p>
-<h2>Secondary scenarios:</h2>
+<h3>Secondary scenarios:</h3>
 
-<h3>1st.</h3>
+<h4>1st.</h4>
 	<p> 
   User makes a transaction with a linked card and receives a push notification.
   </p>
-<h3>2nd.</h3>
+<h4>2nd.</h4>
   <p>
 	User is on the home screen, clicks on an offer and it is expanded, showing detailed information and a location preview.
   </p>
