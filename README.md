@@ -16,7 +16,7 @@ Although there are many CLO applications like the ones presented before, all app
 </p>
 
 <h2>Scenarios</h2>
-<h3>Primary scenario:</h3>
+<h3>Primary scenario</h3>
 <p>
 The user sees a list of locations with offers available, links new cards, sees a list of his linked cards and the transactions he has made.
 
@@ -28,7 +28,7 @@ Is redirected to the “Cards” section where the new card is already visible;
 User selects “Transactions” section;
 It is displayed a list of the transactions made by the user.
 </p>
-<h3>Secondary scenarios:</h3>
+<h3>Secondary scenarios</h3>
 
 <h4>1st.</h4>
 	<p> 
