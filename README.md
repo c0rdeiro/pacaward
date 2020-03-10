@@ -2,7 +2,7 @@
 
 # pacaward - Project Report
 
-##Computer Engineering 2019/2020 
+## Computer Engineering 2019/2020 
 
 Student Name | Student Number | Contact
 ------------ | ------------- | -------------
@@ -15,7 +15,7 @@ Name | Contact
 André Elias | andre@fidel.uk 
 
 
-##Context
+## Context
 
 Consumers often have the problem of receiving discount offers for things they do not really need. Moreover, retailers also have problems when it comes to targeting the right customers for their discounts.
 Card-linked offers (CLO) is a Online-to-Offline (O2O) system, meaning the online marketing leads to an offline (physical) experience, helping mitigate the problems for both entities. Firstly by getting consumers behavior data (with their consent), analysing it, enabling the retailers to make specific marketing campaigns. Secondly by having personalized offers to each consumer, applying the discounts automatically on each purchase just by using the credit or debit card, discarding the need for coupons, promo codes or membership cards.
@@ -29,8 +29,8 @@ CLO is a booming market as a result of the shift to cashless (growth of 20% per 
 Although there are many CLO applications like the ones presented before, all applications differ in their partners, meaning there will be distinct retailers, therefore different offers. Apps also differ in the way they offer their discounts, some work with direct cashback, others use a points system forcing the users to spend it on other offers.
 
 
-##Scenarios
-###Primary scenario
+## Scenarios
+### Primary scenario
 
 The user sees a list of locations with offers available, links new cards, sees a list of his linked cards and the transactions he has made.
 
@@ -43,16 +43,15 @@ The user sees a list of locations with offers available, links new cards, sees a
 7. It is displayed a list of the transactions made by the user.
 
 
-###Secondary scenarios
+### Secondary scenarios
 
-####1st.
-	 
-  User makes a transaction with a linked card and receives a push notification.
+#### 1st.
+User makes a transaction with a linked card and receives a push notification.
  
-####2nd.
-	User is on the home screen, clicks on an offer and it is expanded, showing detailed information and a location preview.
+#### 2nd.
+User is on the home screen, clicks on an offer and it is expanded, showing detailed information and a location preview.
 
-##Work plan
+## Work plan
 
 
 Name | Date 
@@ -82,6 +81,6 @@ Poster A1 | 25/06/2020
 5th Delivery | 26/06/2020
 
 
-###Note: Complete report in "Deliverables" folder
+### Note: Complete report in "Deliverables" folder
 
 
