@@ -20,7 +20,10 @@ André Elias | andre@fidel.uk
 Consumers often have the problem of receiving discount offers for things they do not really need. Moreover, retailers also have problems when it comes to targeting the right customers for their discounts.
 Card-linked offers (CLO) is a Online-to-Offline (O2O) system, meaning the online marketing leads to an offline (physical) experience, helping mitigate the problems for both entities. Firstly by getting consumers behavior data (with their consent), analysing it, enabling the retailers to make specific marketing campaigns. Secondly by having personalized offers to each consumer, applying the discounts automatically on each purchase just by using the credit or debit card, discarding the need for coupons, promo codes or membership cards.
 This way consumers avoid offers for merchants they do not really need, leaving only offers to what they are looking for and turns digital banking into a marketing channel for retailers, benefiting both parts.
-Pacaward is a CLO Android application that integrates Fidel API (Application Programming Interface) and Fidel SDK (Software Development Kit). Using Fidel tools is a great benefit to this project since they already passed difficult barriers caused by the need of accessing customer payment data, consequently there is no need to deal with sensitive data. 
+
+Pacaward is a CLO Android application that integrates Fidel API (Application Programming Interface) and Fidel SDK (Software Development Kit). The app integrates Fidel SDK so the user can link debit/credit cards to the app. When one of these linked cards is used to complete a purchase that has a discount available on the app, this discount is redeemed automatically and the app sends a transaction notification to the user, which is also made visible in the app.
+Using Fidel tools is a great benefit to this project since they already passed difficult barriers caused by the need of accessing customer payment data, consequently there is no need to deal with sensitive data. 
+
 CLO is a booming market as a result of the shift to cashless (growth of 20% per year), thus there are many apps related to this, the most relevant being:
 * Acorns¹ (https://www.acorns.com/) - in every purchase with a liked-card, rounds up to next dollar, giving the user a choice to save or invest their change.</li>
 * Dosh² (https://www.dosh.cash/) - partner of more than 1000 stores and restaurants, has a referral system where users can earn money when a friend links a card.</li> 
@@ -52,35 +55,21 @@ User makes a transaction with a linked card and receives a push notification.
 User is on the home screen, clicks on an offer and it is expanded, showing detailed information and a location preview.
 
 ## Work plan
+![WorkPlan](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/workplan.jpg)
 
+## Requirements
 
-Name | Date 
------------- | ------------- 
-Investigation | 01/03/2020
-Project Proposal | 09/03/2020
-Mockups drawing | 11/03/2020
-Requirements Engineering | 13/03/2020
-Domain Model | 14/03/2020
-Project Charter | 15/03/2020
-WBS | 17/03/2020
-2nd Delivery | 23/03/2020
-Integrate Fidel SDK | 27/03/2020
-Implementation of Profile screen | 30/03/2020
-Implementation of Link card screen | 01/04/2020
-Link cards | 15/04/2020
-List cards | 19/04/2020
-3rd Delivery | 20/04/2020
-List of transactions | 01/05/2020
-Implementation of Main Screen | 05/05/2020
-List of offers | 16/05/2020
-4th Delivery | 18/05/2020
-Push notifications on new transaction | 28/05/2020
-Redirect to map when clicking an address | 15/06/2020
-Filters for offers | 20/06/2020
-Poster A1 | 25/06/2020
-5th Delivery | 26/06/2020
+### Functional Requirements
+![Functional Requirements](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/FR.jpg)
 
+### Non-Functional Requirements
+![Non-Functional Requirements](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/NFR.jpg)
 
-#### Note: Complete report in "Deliverables" folder
+## Domain Model
+![Domain Model](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/DomainModel.jpg)
+## Mockups
+[Interactive Mockups](https://xd.adobe.com/view/fb51c454-218f-44e2-6668-dec95376cf5d-8d60/?fullscreen=off&hints=on)
+![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/allmockups.jpg)
 
-
+### Mockups flow
+![Mockups flow](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups_flow.png)
