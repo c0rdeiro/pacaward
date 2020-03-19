@@ -55,7 +55,7 @@ User makes a transaction with a linked card and receives a push notification.
 User is on the home screen, clicks on an offer and it is expanded, showing detailed information and a location preview.
 
 ## Work plan
-![WorkPlan](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/workplan.jpg)
+![WorkPlan](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/workplanv2.jpg)
 
 ## Requirements
 
