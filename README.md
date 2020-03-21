@@ -69,7 +69,18 @@ User is on the home screen, clicks on an offer and it is expanded, showing detai
 ![Domain Model](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/DomainModel.jpg)
 ## Mockups
 [Interactive Mockups](https://xd.adobe.com/view/fb51c454-218f-44e2-6668-dec95376cf5d-8d60/?fullscreen=off&hints=on)
-![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/allmockups.jpg)
+![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups/001.Splash%20screen.png)
+![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups/002.Initial%20screen.png)
+![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups/003.Login%20screen.png)
+![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups/004.Sign%20up%20screen.png)
+![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups/005.Main%20page.png)
+![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups/007.Main%20page%20–%20detailed%20offer.png)
+![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups/008.Transactions.png)
+![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups/009.Cards[1].png)
+![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups/011.Cards[2].png)
+![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups/012.Card%20Delete.png)
+![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups/006.Log%20out.png)
+
 
 ### Mockups flow
 ![Mockups flow](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups_flow.png)
