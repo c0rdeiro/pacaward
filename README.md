@@ -68,7 +68,7 @@ User is on the home screen, clicks on an offer and it is expanded, showing detai
 ## Domain Model
 ![Domain Model](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/DomainModel.jpg)
 ## Mockups
-[Interactive Mockups](https://xd.adobe.com/view/fb51c454-218f-44e2-6668-dec95376cf5d-8d60/?fullscreen=off&hints=on)
+
 ![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups/001.Splash%20screen.png)
 ![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups/002.Initial%20screen.png)
 ![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups/003.Login%20screen.png)
@@ -81,6 +81,7 @@ User is on the home screen, clicks on an offer and it is expanded, showing detai
 ![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups/012.Card%20Delete.png)
 ![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups/006.Log%20out.png)
 
+[Interactive Mockups](https://xd.adobe.com/view/fb51c454-218f-44e2-6668-dec95376cf5d-8d60/?fullscreen=off&hints=on)
 
 ### Mockups flow
 ![Mockups flow](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups_flow.png)
