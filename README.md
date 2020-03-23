@@ -54,6 +54,9 @@ User makes a transaction with a linked card and receives a push notification.
 #### 2nd.
 User is on the home screen, clicks on an offer and it is expanded, showing detailed information and a location preview.
 
+## Personas
+User - every user must have an account and has access to all functionalities.
+
 ## Work plan
 ![WorkPlan](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/workplanv2.jpg)
 
@@ -85,3 +88,6 @@ User is on the home screen, clicks on an offer and it is expanded, showing detai
 
 ### Mockups flow
 ![Mockups flow](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups_flow.png)
+
+## WBS
+![WBS](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/wbs.png)
