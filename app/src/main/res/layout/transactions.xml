@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#E4E4E4">
+    android:background="@drawable/mainpage">
 
     <ImageView
         android:id="@+id/logoIV"
@@ -42,16 +42,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.178"
         app:srcCompat="@drawable/line" />
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/offersRV"
-        android:layout_width="409dp"
-        android:layout_height="541dp"
-        app:layout_constraintBottom_toTopOf="@+id/offersbtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:orientation="horizontal"/>
 
     <ImageView
         android:id="@+id/imageView"
@@ -104,7 +94,19 @@
         app:layout_constraintTop_toTopOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.0" />
 
-
+    <ListView
+        android:id="@+id/offersLv"
+        android:layout_width="409dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_line"
+        app:layout_constraintVertical_bias="0.114" />
 
 
 
