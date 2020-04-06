@@ -37,22 +37,10 @@
                 android:textColor="#2E5A6A" />
 
             <TextView
-                android:id="@+id/brandlocation"
-                android:layout_width="wrap_content"
-                android:layout_height="16dp"
-                android:layout_below="@id/brandname"
-                android:layout_margin="1dp"
-                android:autoSizeMaxTextSize="10sp"
-                android:autoSizeMinTextSize="8sp"
-                android:autoSizeTextType="uniform"
-                android:text="Location"
-                android:textColor="#C1C1C1" />
-
-            <TextView
                 android:id="@+id/brandofferdesc"
                 android:layout_width="wrap_content"
                 android:layout_height="16dp"
-                android:layout_below="@id/brandlocation"
+                android:layout_below="@id/brandname"
                 android:layout_margin="1dp"
                 android:autoSizeMaxTextSize="10sp"
                 android:autoSizeMinTextSize="8sp"

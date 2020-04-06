@@ -46,12 +46,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/offersRV"
-        android:layout_width="409dp"
-        android:layout_height="541dp"
+        android:layout_margin="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/offersbtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:orientation="horizontal"/>
+        app:layout_constraintTop_toBottomOf="@+id/top_line" />
+
 
     <ImageView
         android:id="@+id/imageView"

@@ -18,14 +18,12 @@ public class OffersRecyclerViewAdapter extends RecyclerView.Adapter<OffersRecycl
 
     private ArrayList<String> imageUrls = new ArrayList<>();
     private ArrayList<String> brandNames = new ArrayList<>();
-    private ArrayList<String> brandLocations = new ArrayList<>();
     private ArrayList<String> offerDesc = new ArrayList<>();
     private Context context;
 
-    public OffersRecyclerViewAdapter(Context context, ArrayList<String> imageUrls, ArrayList<String> brandNames, ArrayList<String> brandLocations, ArrayList<String> offerDesc) {
+    public OffersRecyclerViewAdapter(Context context, ArrayList<String> imageUrls, ArrayList<String> brandNames, ArrayList<String> offerDesc) {
         this.imageUrls = imageUrls;
         this.brandNames = brandNames;
-        this.brandLocations = brandLocations;
         this.offerDesc = offerDesc;
         this.context = context;
     }
@@ -41,7 +39,6 @@ public class OffersRecyclerViewAdapter extends RecyclerView.Adapter<OffersRecycl
         Glide.with(context).asBitmap().load(imageUrls.get(position)).into(holder.logo);
 
         holder.brandname.setText(brandNames.get(position));
-        holder.location.setText(brandLocations.get(position));
         holder.offer.setText(offerDesc.get(position));
         
         holder.logo.setOnClickListener(new View.OnClickListener(){
@@ -60,14 +57,12 @@ public class OffersRecyclerViewAdapter extends RecyclerView.Adapter<OffersRecycl
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView logo;
         TextView brandname;
-        TextView location;
         TextView offer;
 
         public ViewHolder(View itemView) {
             super(itemView);
             logo = itemView.findViewById(R.id.offerimage);
             brandname = itemView.findViewById(R.id.brandname);
-            location = itemView.findViewById(R.id.brandlocation);
             offer = itemView.findViewById(R.id.brandofferdesc);
         }
     }
