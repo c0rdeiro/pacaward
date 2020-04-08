@@ -42,9 +42,8 @@ public class Queue {
     }
 
     private RequestQueue getRequestQueue() {
-        if (requestQueue == null) {
+        if (requestQueue == null)
             requestQueue = Volley.newRequestQueue(ctx.getApplicationContext());
-        }
         return requestQueue;
     }
 

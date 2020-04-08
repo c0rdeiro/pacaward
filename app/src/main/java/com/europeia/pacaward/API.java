@@ -20,7 +20,6 @@ class API {
         JsonObjectRequest req = new JsonObjectRequest(String.format(url, endpoint), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.v("Response", response.toString());
                 try {
                     callback.onSuccess(response);
                 } catch (Exception e) {

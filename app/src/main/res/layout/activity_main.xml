@@ -45,19 +45,20 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/offersRV"
-        android:layout_margin="15dp"
+        android:id="@+id/offersgroupRV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/offersbtn"
+        android:layout_margin="15dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_line" />
+        app:layout_constraintTop_toBottomOf="@+id/top_line"
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/navbar"
         android:layout_width="467dp"
         android:layout_height="58dp"
         app:layout_constraintBottom_toBottomOf="parent"

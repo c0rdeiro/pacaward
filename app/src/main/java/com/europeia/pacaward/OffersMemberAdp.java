@@ -1,42 +1,45 @@
 package com.europeia.pacaward;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class OffersRecyclerViewAdapter extends RecyclerView.Adapter<OffersRecyclerViewAdapter.ViewHolder> {
+public class OffersMemberAdp extends RecyclerView.Adapter<OffersMemberAdp.ViewHolder> {
+
+    private static final String TAG = "Member adp";
 
     private ArrayList<String> imageUrls = new ArrayList<>();
     private ArrayList<String> brandNames = new ArrayList<>();
     private ArrayList<String> offerDesc = new ArrayList<>();
-    private Context context;
+    Activity activity;
 
-    public OffersRecyclerViewAdapter(Context context, ArrayList<String> imageUrls, ArrayList<String> brandNames, ArrayList<String> offerDesc) {
+    public OffersMemberAdp(Activity activity, ArrayList<String> imageUrls, ArrayList<String> brandNames, ArrayList<String> offerDesc) {
+        this.activity = activity;
         this.imageUrls = imageUrls;
         this.brandNames = brandNames;
         this.offerDesc = offerDesc;
-        this.context = context;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_offeritem, parent, false);
-        return new ViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.offers_item, parent, false);
+        return new OffersMemberAdp.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        Glide.with(context).asBitmap().load(imageUrls.get(position)).into(holder.logo);
+        Glide.with(activity).asBitmap().load(imageUrls.get(position)).into(holder.logo);
 
         holder.brandname.setText(brandNames.get(position));
         holder.offer.setText(offerDesc.get(position));
@@ -44,7 +47,7 @@ public class OffersRecyclerViewAdapter extends RecyclerView.Adapter<OffersRecycl
         holder.logo.setOnClickListener(new View.OnClickListener(){
           @Override
           public void onClick(View view){
-              Toast.makeText(context, brandNames.get(position), Toast.LENGTH_SHORT).show();
+              //make on click opening detailed offer
           }  
         });
     }

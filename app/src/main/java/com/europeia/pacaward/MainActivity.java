@@ -2,6 +2,7 @@ package com.europeia.pacaward;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,10 +19,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     private static final String TAG = "Main Activity";
-    Button profileBtn;
-    Button transactionBtn;
-    Button offersBtn;
-    Button cardsBtn;
+
+    private ArrayList<String> offersListGroup = new ArrayList<>();
+    private LinearLayoutManager layoutManagerGroup;
+    private OffersGroupAdp adapterGroup;
+
+    private Button profileBtn;
+    private Button transactionBtn;
+    private Button offersBtn;
+    private Button cardsBtn;
+    private RecyclerView rvgroup;
     private ArrayList<String> imageUrls = new ArrayList<>();
     private ArrayList<String> brandNames = new ArrayList<>();
     private ArrayList<String> brandIds = new ArrayList<>();
@@ -36,34 +43,19 @@ public class MainActivity extends AppCompatActivity {
         offersBtn = findViewById(R.id.offersbtn);
         cardsBtn = findViewById(R.id.cardsbtn);
         profileBtn = findViewById(R.id.profilebtn);
+        rvgroup = findViewById(R.id.offersgroupRV);
+        populateCats();
         getOffers();
 
     }
 
-    private void onOffers(JSONObject obj) {
-        try {
-            JSONArray jsonArray = obj.getJSONArray("items");
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject object = jsonArray.getJSONObject(i);
-                imageUrls.add(object.getString("brandLogoURL"));
-                brandNames.add(object.getString("brandName"));
-                brandIds.add(object.getString("brandId"));
-                offerDesc.add(object.getString("name"));
-            }
-
-            Log.i(TAG, brandNames.toString());
-        } catch (
-                JSONException e) {
-            e.printStackTrace();
-        }
-        initRecyclerView();
-    }
-
     private void getOffers() {
+        Log.d(TAG,"getoffers");
         final VolleyCallback callback = new VolleyCallback() {
             @Override
             public void onSuccess(JSONObject result) {
                 onOffers(result);
+                //getCategories();
             }
 
             @Override
@@ -74,13 +66,62 @@ public class MainActivity extends AppCompatActivity {
         API.get("offers", Queue.getInstance(getApplicationContext()), callback);
     }
 
+//    private void getCategories() {
+//        final VolleyCallback callback = new VolleyCallback() {
+//            @Override
+//            public void onSuccess(JSONObject result) {
+//                onCategories(result);
+//            }
+//
+//            @Override
+//            public void onError(String result) {
+//                Log.e("getCategories",result);
+//            }
+//        };
+//
+//
+//        API.get("offers", Queue.getInstance(getApplicationContext()), callback);
+//    }
+//
+//    private void onCategories(JSONObject result) {
+//    }
+
+    private void onOffers(JSONObject obj) {
+        Log.d(TAG, "onoffers");
+        try {
+            JSONArray jsonArray = obj.getJSONArray("items");
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject object = jsonArray.getJSONObject(i);
+                imageUrls.add(object.getString("brandLogoURL"));
+                brandNames.add(object.getString("brandName"));
+                brandIds.add(object.getString("brandId"));
+                offerDesc.add(object.getString("name"));
+            }
+
+        } catch (
+                JSONException e) {
+            e.printStackTrace();
+        }
+        initRecyclerView();
+    }
+
+    private void populateCats(){
+        offersListGroup.add("Food");
+        offersListGroup.add("Clothing");
+        offersListGroup.add("Books");
+        offersListGroup.add("House");
+    }
+
+
+
     private void initRecyclerView() {
         Log.i("HERE", "initRecyclerView");
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        RecyclerView recyclerView = findViewById(R.id.offersRV);
-        recyclerView.setLayoutManager(layoutManager);
-        Log.i(TAG, imageUrls.toString());
-        OffersRecyclerViewAdapter adapter = new OffersRecyclerViewAdapter(this, imageUrls, brandNames,  offerDesc); //brandLocations,
-        recyclerView.setAdapter(adapter);
+
+        adapterGroup = new OffersGroupAdp(MainActivity.this, offersListGroup, imageUrls, brandNames, offerDesc);
+        layoutManagerGroup = new LinearLayoutManager(this);
+        rvgroup.setLayoutManager(layoutManagerGroup);
+        rvgroup.setAdapter(adapterGroup);
+
+
     }
 }
