@@ -38,11 +38,9 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<OfferCategory> offersPerCategory = new ArrayList<>();
 
 
-    private ArrayList<String> imageUrls = new ArrayList<>();
-    private ArrayList<String> brandNames = new ArrayList<>();
     private ArrayList<String> brandIds = new ArrayList<>();
-    private ArrayList<String> offerDesc = new ArrayList<>();
-    private HashSet<String> categories = new HashSet<>();
+    private ArrayList<String> categoriesPerOffer = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             JSONArray jsonArray = obj.getJSONArray("items");
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject object = jsonArray.getJSONObject(i);
-                offer = new Offer(object.getString("brandName"), object.getString("name"), object.getString("brandLogoURL"));
+                offerArrayList.add(new Offer(object.getString("brandName"), object.getString("name"), object.getString("brandLogoURL")));
                 brandIds.add(object.getString("brandId"));
             }
         } catch (
@@ -116,21 +114,25 @@ public class MainActivity extends AppCompatActivity {
         try {
             JSONArray jsonArrayComplete = result.getJSONArray("items");
             JSONObject jsonObject = jsonArrayComplete.getJSONObject(0);
-            offer.setOfferCategory(jsonObject.getJSONObject("metadata").getString("customKey1"));
+            categoriesPerOffer.add(jsonObject.getJSONObject("metadata").getString("customKey1"));
         } catch (
                 JSONException e) {
             e.printStackTrace();
         }
-        offerArrayList.add(offer);
+
         if(aux == 0) initRecyclerView();
     }
 
     private void initRecyclerView() {
         Log.i(TAG, "initRecyclerView");
 
-        for(Offer i : offerArrayList)
-            categories.add(i.getOfferCategory());
+        for(int i = 0; i < categoriesPerOffer.size(); i++)
+            offerArrayList.get(i).setOfferCategory(categoriesPerOffer.get(i));
 
+
+
+
+        HashSet<String> categories = new HashSet<>(categoriesPerOffer);
 
         for(String cat : categories){
             ArrayList<Offer> catoffer = new ArrayList<>();
