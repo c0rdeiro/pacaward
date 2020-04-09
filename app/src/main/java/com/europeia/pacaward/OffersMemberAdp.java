@@ -2,6 +2,7 @@ package com.europeia.pacaward;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +20,12 @@ public class OffersMemberAdp extends RecyclerView.Adapter<OffersMemberAdp.ViewHo
 
     private static final String TAG = "Member adp";
 
-    private ArrayList<String> imageUrls = new ArrayList<>();
-    private ArrayList<String> brandNames = new ArrayList<>();
-    private ArrayList<String> offerDesc = new ArrayList<>();
-    Activity activity;
+    private Activity activity;
+    private ArrayList<Offer> offers;
 
-    public OffersMemberAdp(Activity activity, ArrayList<String> imageUrls, ArrayList<String> brandNames, ArrayList<String> offerDesc) {
+    public OffersMemberAdp(Activity activity, ArrayList<Offer> offers) {
         this.activity = activity;
-        this.imageUrls = imageUrls;
-        this.brandNames = brandNames;
-        this.offerDesc = offerDesc;
+        this.offers = offers;
     }
 
     @Override
@@ -39,22 +36,16 @@ public class OffersMemberAdp extends RecyclerView.Adapter<OffersMemberAdp.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        Glide.with(activity).asBitmap().load(imageUrls.get(position)).into(holder.logo);
 
-        holder.brandname.setText(brandNames.get(position));
-        holder.offer.setText(offerDesc.get(position));
-        
-        holder.logo.setOnClickListener(new View.OnClickListener(){
-          @Override
-          public void onClick(View view){
-              //make on click opening detailed offer
-          }  
-        });
+
+        Glide.with(activity).asBitmap().load(offers.get(position).getImageUrl()).into(holder.logo);
+        holder.brandname.setText(offers.get(position).getBrandName());
+        holder.offer.setText(offers.get(position).getDescription());
     }
 
     @Override
     public int getItemCount() {
-        return brandNames.size();
+        return offers.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

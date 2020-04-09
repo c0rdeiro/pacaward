@@ -1,6 +1,7 @@
 package com.europeia.pacaward;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,24 +10,21 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class OffersGroupAdp extends RecyclerView.Adapter<OffersGroupAdp.ViewHolder> {
 
     private static final String TAG = "Group adapter";
 
     private Activity activity;
-    private ArrayList<String> arrayListGroup;
-    private ArrayList<String> imageUrls = new ArrayList<>();
-    private ArrayList<String> brandNames = new ArrayList<>();
-    private ArrayList<String> offerDesc = new ArrayList<>();
 
-    OffersGroupAdp(Activity activity, ArrayList<String> arrayListGroup, ArrayList<String> imageUrls, ArrayList<String> brandNames, ArrayList<String> offerDesc){
+    private ArrayList<OfferCategory> offersPerCat;
+
+    OffersGroupAdp(Activity activity, ArrayList<OfferCategory> offersPerCat){
         this.activity = activity;
-        this.arrayListGroup = arrayListGroup;
-        this.imageUrls = imageUrls;
-        this.brandNames = brandNames;
-        this.offerDesc = offerDesc;
+        this.offersPerCat = offersPerCat;
     }
 
     @Override
@@ -37,9 +35,10 @@ public class OffersGroupAdp extends RecyclerView.Adapter<OffersGroupAdp.ViewHold
 
     @Override
     public void onBindViewHolder(OffersGroupAdp.ViewHolder holder, int position) {
-        holder.offer_row_name.setText(arrayListGroup.get(position));
 
-        OffersMemberAdp offersMemberAdp = new OffersMemberAdp(activity, imageUrls, brandNames, offerDesc);
+        holder.offer_row_name.setText(offersPerCat.get(position).getCategoryName());
+
+        OffersMemberAdp offersMemberAdp = new OffersMemberAdp(activity, offersPerCat.get(position).getOffers());
         LinearLayoutManager layoutManagerMember = new LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false);
         holder.rv_row.setLayoutManager(layoutManagerMember);
         holder.rv_row.setAdapter(offersMemberAdp);
@@ -48,7 +47,7 @@ public class OffersGroupAdp extends RecyclerView.Adapter<OffersGroupAdp.ViewHold
 
     @Override
     public int getItemCount() {
-        return arrayListGroup.size();
+        return offersPerCat.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

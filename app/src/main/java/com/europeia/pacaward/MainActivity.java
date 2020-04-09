@@ -2,7 +2,6 @@ package com.europeia.pacaward;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,10 +29,20 @@ public class MainActivity extends AppCompatActivity {
     private Button offersBtn;
     private Button cardsBtn;
     private RecyclerView rvgroup;
+    private int aux;
+
+
+
+    private Offer offer;
+    private ArrayList<Offer> offerArrayList = new ArrayList<>();
+    private ArrayList<OfferCategory> offersPerCategory = new ArrayList<>();
+
+
     private ArrayList<String> imageUrls = new ArrayList<>();
     private ArrayList<String> brandNames = new ArrayList<>();
     private ArrayList<String> brandIds = new ArrayList<>();
     private ArrayList<String> offerDesc = new ArrayList<>();
+    private HashSet<String> categories = new HashSet<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         cardsBtn = findViewById(R.id.cardsbtn);
         profileBtn = findViewById(R.id.profilebtn);
         rvgroup = findViewById(R.id.offersgroupRV);
-        populateCats();
         getOffers();
 
     }
@@ -55,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(JSONObject result) {
                 onOffers(result);
-                //getCategories();
             }
 
             @Override
@@ -65,59 +73,75 @@ public class MainActivity extends AppCompatActivity {
         };
         API.get("offers", Queue.getInstance(getApplicationContext()), callback);
     }
-
-//    private void getCategories() {
-//        final VolleyCallback callback = new VolleyCallback() {
-//            @Override
-//            public void onSuccess(JSONObject result) {
-//                onCategories(result);
-//            }
-//
-//            @Override
-//            public void onError(String result) {
-//                Log.e("getCategories",result);
-//            }
-//        };
-//
-//
-//        API.get("offers", Queue.getInstance(getApplicationContext()), callback);
-//    }
-//
-//    private void onCategories(JSONObject result) {
-//    }
-
     private void onOffers(JSONObject obj) {
         Log.d(TAG, "onoffers");
         try {
             JSONArray jsonArray = obj.getJSONArray("items");
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject object = jsonArray.getJSONObject(i);
-                imageUrls.add(object.getString("brandLogoURL"));
-                brandNames.add(object.getString("brandName"));
+                offer = new Offer(object.getString("brandName"), object.getString("name"), object.getString("brandLogoURL"));
                 brandIds.add(object.getString("brandId"));
-                offerDesc.add(object.getString("name"));
             }
-
         } catch (
                 JSONException e) {
             e.printStackTrace();
         }
-        initRecyclerView();
+        aux = brandIds.size();
+        getCategories();
     }
 
-    private void populateCats(){
-        offersListGroup.add("Food");
-        offersListGroup.add("Clothing");
-        offersListGroup.add("Books");
-        offersListGroup.add("House");
+    private void getCategories() {
+        Log.i(TAG,"getcategories");
+        final VolleyCallback callback = new VolleyCallback() {
+            @Override
+            public void onSuccess(JSONObject result) {
+                onCategories(result);
+            }
+
+            @Override
+            public void onError(String result) {
+                Log.e("getCategories",result);
+            }
+        };
+
+        for (String id : brandIds) {
+            API.get("brands", id, Queue.getInstance(getApplicationContext()), callback);
+        };
+
     }
 
-
+    private void onCategories(JSONObject result) {
+        Log.i(TAG, "oncategories");
+        aux --;
+        try {
+            JSONArray jsonArrayComplete = result.getJSONArray("items");
+            JSONObject jsonObject = jsonArrayComplete.getJSONObject(0);
+            offer.setOfferCategory(jsonObject.getJSONObject("metadata").getString("customKey1"));
+        } catch (
+                JSONException e) {
+            e.printStackTrace();
+        }
+        offerArrayList.add(offer);
+        if(aux == 0) initRecyclerView();
+    }
 
     private void initRecyclerView() {
-        Log.i("HERE", "initRecyclerView");
+        Log.i(TAG, "initRecyclerView");
 
-        adapterGroup = new OffersGroupAdp(MainActivity.this, offersListGroup, imageUrls, brandNames, offerDesc);
+        for(Offer i : offerArrayList)
+            categories.add(i.getOfferCategory());
+
+
+        for(String cat : categories){
+            ArrayList<Offer> catoffer = new ArrayList<>();
+            for(Offer i : offerArrayList)
+                if(cat.equals(i.getOfferCategory()))
+                    catoffer.add(i);
+
+            offersPerCategory.add(new OfferCategory(catoffer, cat));
+        }
+
+        adapterGroup = new OffersGroupAdp(MainActivity.this, offersPerCategory);
         layoutManagerGroup = new LinearLayoutManager(this);
         rvgroup.setLayoutManager(layoutManagerGroup);
         rvgroup.setAdapter(adapterGroup);

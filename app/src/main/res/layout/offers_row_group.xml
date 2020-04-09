@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/offer_row_name"
             android:layout_margin="5dp"
+            android:paddingLeft="10dp"
             android:text="FOOD"
             android:textColor="#2E5A6A"/>
 
