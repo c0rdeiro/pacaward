@@ -11,7 +11,7 @@
         android:layout_width="135dp"
         android:layout_height="182dp"
         android:layout_centerInParent="true"
-        app:cardBackgroundColor="#EFEEEE"
+        app:cardBackgroundColor="@color/colorPrimary"
         app:cardCornerRadius="11dp"
         app:cardElevation="1dp">
 

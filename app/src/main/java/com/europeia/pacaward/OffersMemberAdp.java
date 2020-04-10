@@ -1,15 +1,12 @@
 package com.europeia.pacaward;
 
 import android.app.Activity;
-import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -17,9 +14,6 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class OffersMemberAdp extends RecyclerView.Adapter<OffersMemberAdp.ViewHolder> {
-
-    private static final String TAG = "Member adp";
-
     private Activity activity;
     private ArrayList<Offer> offers;
 
@@ -36,7 +30,6 @@ public class OffersMemberAdp extends RecyclerView.Adapter<OffersMemberAdp.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-
 
         Glide.with(activity).asBitmap().load(offers.get(position).getImageUrl()).into(holder.logo);
         holder.brandname.setText(offers.get(position).getBrandName());

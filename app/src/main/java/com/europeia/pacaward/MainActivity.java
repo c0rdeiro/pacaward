@@ -1,12 +1,18 @@
 package com.europeia.pacaward;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,23 +26,13 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "Main Activity";
 
-    private ArrayList<String> offersListGroup = new ArrayList<>();
     private LinearLayoutManager layoutManagerGroup;
     private OffersGroupAdp adapterGroup;
-
     private Button profileBtn;
-    private Button transactionBtn;
-    private Button offersBtn;
-    private Button cardsBtn;
     private RecyclerView rvgroup;
     private int aux;
-
-
-
-    private Offer offer;
     private ArrayList<Offer> offerArrayList = new ArrayList<>();
     private ArrayList<OfferCategory> offersPerCategory = new ArrayList<>();
-
 
     private ArrayList<String> brandIds = new ArrayList<>();
     private ArrayList<String> categoriesPerOffer = new ArrayList<>();
@@ -47,13 +43,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        transactionBtn = findViewById(R.id.transactionsbtn);
-        offersBtn = findViewById(R.id.offersbtn);
-        cardsBtn = findViewById(R.id.cardsbtn);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navbar);
+        bottomNavigationView.setSelectedItemId(R.id.offers);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.transactions:
+                        startActivity(new Intent(getApplicationContext(), TransactionsActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.offers:
+
+                        return true;
+                    case R.id.cards:
+                        startActivity(new Intent(getApplicationContext(), CardsActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                }
+                return false;
+            }
+        });
+
         profileBtn = findViewById(R.id.profilebtn);
         rvgroup = findViewById(R.id.offersgroupRV);
         getOffers();
-
     }
 
     private void getOffers() {
@@ -63,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(JSONObject result) {
                 onOffers(result);
             }
-
             @Override
             public void onError(String result) {
                 Log.e("getOffers",result);
@@ -95,17 +110,14 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(JSONObject result) {
                 onCategories(result);
             }
-
             @Override
             public void onError(String result) {
                 Log.e("getCategories",result);
             }
         };
-
         for (String id : brandIds) {
-            API.get("brands", id, Queue.getInstance(getApplicationContext()), callback);
+            API.get("brands/"+ id, Queue.getInstance(getApplicationContext()), callback);
         };
-
     }
 
     private void onCategories(JSONObject result) {
@@ -119,35 +131,26 @@ public class MainActivity extends AppCompatActivity {
                 JSONException e) {
             e.printStackTrace();
         }
-
         if(aux == 0) initRecyclerView();
     }
 
     private void initRecyclerView() {
         Log.i(TAG, "initRecyclerView");
-
         for(int i = 0; i < categoriesPerOffer.size(); i++)
             offerArrayList.get(i).setOfferCategory(categoriesPerOffer.get(i));
 
-
-
-
         HashSet<String> categories = new HashSet<>(categoriesPerOffer);
 
-        for(String cat : categories){
+        for(String cat : categories) {
             ArrayList<Offer> catoffer = new ArrayList<>();
-            for(Offer i : offerArrayList)
-                if(cat.equals(i.getOfferCategory()))
+            for (Offer i : offerArrayList)
+                if (cat.equals(i.getOfferCategory()))
                     catoffer.add(i);
-
             offersPerCategory.add(new OfferCategory(catoffer, cat));
         }
-
         adapterGroup = new OffersGroupAdp(MainActivity.this, offersPerCategory);
         layoutManagerGroup = new LinearLayoutManager(this);
         rvgroup.setLayoutManager(layoutManagerGroup);
         rvgroup.setAdapter(adapterGroup);
-
-
     }
 }

@@ -14,10 +14,7 @@ import java.util.ArrayList;
 
 public class OffersGroupAdp extends RecyclerView.Adapter<OffersGroupAdp.ViewHolder> {
 
-    private static final String TAG = "Group adapter";
-
     private Activity activity;
-
     private ArrayList<OfferCategory> offersPerCat;
 
     OffersGroupAdp(Activity activity, ArrayList<OfferCategory> offersPerCat){
@@ -40,7 +37,6 @@ public class OffersGroupAdp extends RecyclerView.Adapter<OffersGroupAdp.ViewHold
         LinearLayoutManager layoutManagerMember = new LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false);
         holder.rv_row.setLayoutManager(layoutManagerMember);
         holder.rv_row.setAdapter(offersMemberAdp);
-
     }
 
     @Override
@@ -49,10 +45,8 @@ public class OffersGroupAdp extends RecyclerView.Adapter<OffersGroupAdp.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         TextView offer_row_name;
         RecyclerView rv_row;
-
 
         public ViewHolder(View itemView) {
             super(itemView);
