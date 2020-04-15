@@ -1,7 +1,15 @@
 package com.europeia.pacaward;
 
+import android.util.Log;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Transaction {
 
+    private static final String TAG = "Transaction";
     private String brandName;
     private String logoUrl;
     private String location;
@@ -16,6 +24,7 @@ public class Transaction {
         this.location = location;
         this.date = date;
         this.amountSpent = amountSpent;
+        this.currency = currency;
     }
 
     public String getBrandName() {
@@ -31,11 +40,14 @@ public class Transaction {
     }
 
     public String getDate() {
-        return date;
+        String dateDate = this.date.substring(0,10);
+        String dateTime = this.date.substring(11,16);
+
+        return String.format("%s %s",dateDate,dateTime);
     }
 
     public String getAmountSpent() {
-        return amountSpent;
+        return String.format("%s€",amountSpent);
     }
 
 }

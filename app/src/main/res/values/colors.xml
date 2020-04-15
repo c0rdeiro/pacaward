@@ -4,5 +4,6 @@
     <color name="colorAccent">#2E5A6A</color>
     <color name="btnselected">#F4E7D3</color>
     <color name="btnunselected">#8D9C99</color>
-    <color name="transaction_loc">#C5C5C5</color>
+    <color name="transaction_loc">#979797</color>
+    <color name="card">#EFEEEE</color>
 </resources>

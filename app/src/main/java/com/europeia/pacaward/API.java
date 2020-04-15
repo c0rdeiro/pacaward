@@ -18,7 +18,7 @@ class API {
 
 
     static void get(String endpoint, Queue queue, final VolleyCallback callback) {
-        Log.i(TAG, url);
+        Log.i(TAG, "get");
         JsonObjectRequest req = new JsonObjectRequest(String.format(url, endpoint), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

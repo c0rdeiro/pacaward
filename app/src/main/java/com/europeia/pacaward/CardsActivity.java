@@ -9,10 +9,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.TextView;
+import android.view.View;
 
+import com.fidel.sdk.Fidel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,6 +28,7 @@ public class CardsActivity extends AppCompatActivity {
     private CardsAdp cardsAdp;
     private ArrayList<Card> cardArrayList = new ArrayList<>();
     private LinearLayoutManager linearLayoutManager;
+    private FloatingActionButton addCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +57,17 @@ public class CardsActivity extends AppCompatActivity {
                 return false;
             }
         });
+        addCard =(FloatingActionButton) findViewById(R.id.addingcardbtn);
 
-        rvcards = findViewById(R.id.rv_cards);
+        addCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(getApplicationContext(), FidelSDKActivity.class));
+            }
+        });
+
+        rvcards =(RecyclerView) findViewById(R.id.rv_cards);
         getCards();
     }
 
@@ -79,7 +90,6 @@ public class CardsActivity extends AppCompatActivity {
         Log.i(TAG, "oncards");
         try {
             JSONArray jsonArray = result.getJSONArray("items");
-            Log.i(TAG, jsonArray.toString());
             for(int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 cardArrayList.add(new Card(jsonObject.getString("lastNumbers"), jsonObject.getString("expMonth"), jsonObject.getString("expYear"), jsonObject.getString("type")));

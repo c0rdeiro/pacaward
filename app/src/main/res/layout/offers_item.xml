@@ -11,9 +11,9 @@
         android:layout_width="135dp"
         android:layout_height="182dp"
         android:layout_centerInParent="true"
-        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardBackgroundColor="@color/card"
         app:cardCornerRadius="11dp"
-        app:cardElevation="1dp">
+        app:cardElevation="2dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -31,7 +31,7 @@
                 android:layout_height="16dp"
                 android:layout_below="@id/offerimage"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginBottom="1dp"
                 android:autoSizeMaxTextSize="15sp"
                 android:autoSizeMinTextSize="10sp"
@@ -45,7 +45,7 @@
                 android:layout_height="16dp"
                 android:layout_below="@id/brandname"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginBottom="1dp"
                 android:autoSizeMaxTextSize="12sp"
                 android:autoSizeMinTextSize="8sp"

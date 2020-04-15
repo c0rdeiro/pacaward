@@ -10,9 +10,8 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="350dp"
-        android:layout_height="100dp"
+        android:layout_height="200dp"
         android:layout_centerInParent="true"
-        app:cardBackgroundColor="@color/colorAccent"
         app:cardCornerRadius="20dp"
         app:cardElevation="1dp">
 
@@ -26,11 +25,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/hidden"
-                android:text="ºººº"
-                android:layout_marginLeft="15dp"
+                android:text="••••"
+                android:layout_marginLeft="50dp"
+                android:textSize="20dp"
                 android:layout_centerVertical="true"
-                android:autoSizeMaxTextSize="15sp"
-                android:autoSizeMinTextSize="10sp"
+                android:autoSizeMaxTextSize="20sp"
+                android:autoSizeMinTextSize="15sp"
                 android:textColor="@color/colorPrimary"
 
                 />
@@ -38,11 +38,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/cardnumber"
-                android:text="5529"
+                android:text="8888"
                 android:layout_marginLeft="15dp"
+                android:textSize="20dp"
                 android:layout_centerVertical="true"
-                android:autoSizeMaxTextSize="15sp"
-                android:autoSizeMinTextSize="10sp"
+                android:autoSizeMaxTextSize="20sp"
+                android:autoSizeMinTextSize="15sp"
                 android:layout_toRightOf="@+id/hidden"
                 android:textColor="@color/colorPrimary"
                 />
@@ -51,22 +52,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/expirationdate"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
-                android:textSize="6dp"
-                android:autoSizeMaxTextSize="8sp"
-                android:autoSizeMinTextSize="6sp"
+                android:textSize="12dp"
+                android:autoSizeMaxTextSize="12sp"
+                android:autoSizeMinTextSize="10sp"
                 android:text="Exp: 22/03"
                 android:layout_below="@+id/cardnumber"
                 android:textColor="@color/colorPrimary"
                 />
             <Button
                 android:id="@+id/delete_card"
-                android:layout_width="2dp"
-                android:layout_height="2dp"
-                android:layout_margin="10dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="15dp"
                 android:layout_alignParentRight="true"
                 android:background="@drawable/ic_close_black_24dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/card_type"
+                android:background="@drawable/ic_mastercardlogo"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="15dp"
+
+                />
+
+
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

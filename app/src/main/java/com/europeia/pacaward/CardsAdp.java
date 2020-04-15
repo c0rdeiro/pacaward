@@ -26,7 +26,7 @@ class CardsAdp extends RecyclerView.Adapter<CardsAdp.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull CardsAdp.ViewHolder holder, int position) {
         holder.lastNumber.setText(cards.get(position).getLastNumbers());
-        holder.expDate.setText("Exp: " + cards.get(position).getExpMonth() + "/" + cards.get(position).getExpYear());
+        holder.expDate.setText(cards.get(position).getDate());
     }
 
     @Override
