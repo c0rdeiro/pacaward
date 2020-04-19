@@ -38,15 +38,14 @@ Although there are many CLO applications like the ones presented before, all app
 After logging in, the user sees a list of offers available, links a new card, sees a list of his linked
 cards and the transactions he has made.
 
-1. User logs in;
-2. When entering the app, the user has a list of all offers available;
-3. By clicking on Cards the user is redirected to cards screen;
-4. User sees a lists of linked cards (if no cards are linked a message will be displayed);
-5. By clicking in the plus sign to add a new card and is redirected to Fidel SDK;
-6. Fills the information required and submits;
-7. Is redirected to the Cards screen where the new card is already visible;
-8. User clicks Transactions;
-9. It is displayed a list of the transactions made by the user filtered by date.
+1. When entering the app, the user has a list of all offers available;
+2. By clicking on Cards the user is redirected to cards screen;
+3. User sees a lists of linked cards (if no cards are linked a message will be displayed);
+4. By clicking in the plus sign to add a new card and is redirected to Fidel SDK;
+5. Fills the information required and submits;
+6. Is redirected to the Cards screen where the new card is already visible;
+7. User clicks Transactions;
+8. It is displayed a list of the transactions made by the user filtered by date.
 
 ### Secondary scenarios
 
