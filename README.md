@@ -21,7 +21,7 @@ Consumers often have the problem of receiving discount offers for things they do
 Card-linked offers (CLO) is a Online-to-Offline (O2O) system, meaning the online marketing leads to an offline (physical) experience, helping mitigate the problems for both entities. Firstly by getting consumers behavior data (with their consent), analysing it, enabling the retailers to make specific marketing campaigns. Secondly by having personalized offers to each consumer, applying the discounts automatically on each purchase just by using the credit or debit card, discarding the need for coupons, promo codes or membership cards.
 This way consumers avoid offers for merchants they do not really need, leaving only offers to what they are looking for and turns digital banking into a marketing channel for retailers, benefiting both parts.
 
-Pacaward is a CLO Android application that integrates Fidel API (Application Programming Interface) and Fidel SDK (Software Development Kit). The app integrates Fidel SDK so the user can link debit/credit cards to the app. When one of these linked cards is used to complete a purchase that has a discount available on the app, this discount is redeemed automatically and the app sends a transaction notification to the user, which is also made visible in the app.
+Pacaward is a CLO Android application that integrates Fidel API. The app integrates Fidel SDK so the user can link debit/credit cards to the app. When one of these linked cards is used to complete a purchase that has a discount available on the app, this discount is redeemed automatically and the app sends a transaction notification to the user, which is also made visible in the app.
 Using Fidel tools is a great benefit to this project since they already passed difficult barriers caused by the need of accessing customer payment data, consequently there is no need to deal with sensitive data. 
 
 CLO is a booming market as a result of the shift to cashless (growth of 20% per year), thus there are many apps related to this, the most relevant being:
@@ -33,18 +33,19 @@ Although there are many CLO applications like the ones presented before, all app
 
 
 ## Scenarios
-### Primary scenario
+### Main scenario
 
-The user sees a list of locations with offers available, links new cards, sees a list of his linked cards and the transactions he has made.
+After logging in, the user sees a list of offers available, links a new card, sees a list of his linked
+cards and the transactions he has made.
 
 1. When entering the app, the user has a list of all offers available;
-2. By clicking on the Profile user is redirected to profile screen, where by display is showed the “Cards” sections;
-3. By clicking in the plus sign to add a new card and is redirected to add card page;
-4. Fills the information required and submits;
-5. Is redirected to the “Cards” section where the new card is already visible;
-6. User selects “Transactions” section;
-7. It is displayed a list of the transactions made by the user.
-
+2. By clicking on Cards the user is redirected to cards screen;
+3. User sees a lists of linked cards (if no cards are linked a message will be displayed);
+4. By clicking in the plus sign to add a new card and is redirected to Fidel SDK;
+5. Fills the information required and submits;
+6. Is redirected to the Cards screen where the new card is already visible;
+7. User clicks Transactions;
+8. It is displayed a list of the transactions made by the user filtered by date.
 
 ### Secondary scenarios
 
