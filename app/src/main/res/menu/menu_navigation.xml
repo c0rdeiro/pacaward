@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <item
-        android:id="@+id/transactions"
+        android:id="@+id/nav_transactions"
         android:title="Transactions"
         android:icon="@drawable/ic_transactions_unselected"/>
     <item
-        android:id="@+id/offers"
+        android:id="@+id/nav_offers"
         android:title="Offers"
         android:icon="@drawable/ic_offers_selected"
         />
     <item
-        android:id="@+id/cards"
+        android:id="@+id/nav_cards"
         android:title="Cards"
         android:icon="@drawable/ic_cards_unselected"/>
 </menu>

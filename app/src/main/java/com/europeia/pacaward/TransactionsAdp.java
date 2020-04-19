@@ -39,7 +39,7 @@ class TransactionsAdp extends RecyclerView.Adapter<TransactionsAdp.ViewHolder> {
         holder.location.setText(transactions.get(position).getLocation());
         holder.date.setText(transactions.get(position).getDate());
         holder.amountSpent.setText(transactions.get(position).getAmountSpent());
-        holder.amountSaved.setText("+5.00€");
+        holder.amountSaved.setText(transactions.get(position).getAmountSaved());
     }
 
     @Override

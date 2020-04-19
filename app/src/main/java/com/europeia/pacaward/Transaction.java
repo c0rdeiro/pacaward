@@ -18,13 +18,15 @@ public class Transaction {
     private String amountSpent;
     private String currency;
 
-    public Transaction(String brandName, String logoUrl, String location, String date, String amountSpent, String currency) {
+    public Transaction(String brandName, String logoUrl, String location, String date, String amountSpent,String amountSaved, String currency) {
         this.brandName = brandName;
         this.logoUrl = logoUrl;
         this.location = location;
         this.date = date;
         this.amountSpent = amountSpent;
+        this.amountSaved = amountSaved;
         this.currency = currency;
+
     }
 
     public String getBrandName() {
@@ -47,7 +49,24 @@ public class Transaction {
     }
 
     public String getAmountSpent() {
-        return String.format("%s€",amountSpent);
+        return String.format("%s %s", amountSpent, getCurrency());
     }
 
+    public String getAmountSaved() {
+        return String.format("+%s %s", amountSaved, getCurrency());
+    }
+
+    public String getCurrency(){
+
+        switch (this.currency){
+            case "EUR":
+                return "€";
+            case "GBP":
+                return "£";
+            case "USD":
+                return "$";
+        }
+
+        return this.currency;
+    }
 }

@@ -13,7 +13,8 @@
         android:layout_centerInParent="true"
         app:cardBackgroundColor="@color/card"
         app:cardCornerRadius="11dp"
-        app:cardElevation="2dp">
+        app:cardElevation="2dp"
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
