@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.navbar);
+        bottomNavigationView.setItemIconTintList(null);
         bottomNavigationView.setSelectedItemId(R.id.nav_offers);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_place, new OffersFragment()).commit();
