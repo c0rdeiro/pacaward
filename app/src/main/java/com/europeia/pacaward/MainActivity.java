@@ -16,24 +16,31 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "Main Actitvity";
     private Button profileBtn;
-
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.navbar);
+        bottomNavigationView = findViewById(R.id.navbar);
         bottomNavigationView.setItemIconTintList(null);
-        bottomNavigationView.setSelectedItemId(R.id.nav_offers);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
+
+        bottomNavigationView.setSelectedItemId(R.id.nav_offers);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_place, new OffersFragment()).commit();
 
+        checkIntent();
 
         profileBtn = findViewById(R.id.profilebtn);
-
     }
 
+    private void checkIntent(){
+        if(getIntent().getStringExtra("extra") != null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_place, new CardsFragment()).commit();
+            bottomNavigationView.setSelectedItemId(R.id.nav_cards);
+        }
+    }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =  new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {

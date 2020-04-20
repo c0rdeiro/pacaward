@@ -4,7 +4,6 @@
     <style name="AppTheme" parent="Theme.Design.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorOnPrimary">@color/colorOnPrimary</item>
     </style>
 
 
