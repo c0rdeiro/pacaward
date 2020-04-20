@@ -71,6 +71,9 @@ User - every user must have an account and has access to all functionalities.
 
 ## Domain Model
 ![Domain Model](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/DomainModel.jpg)
+
+## Architecture
+![Architecture](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/pacaward_architecture.png)
 ## Mockups
 
 ![Mockups](https://raw.githubusercontent.com/c0rdeiro/pacaward/master/Deliverables/Attachments/mockups/001.Splash%20screen.png)
