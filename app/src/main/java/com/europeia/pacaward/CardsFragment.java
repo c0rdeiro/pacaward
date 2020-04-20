@@ -91,7 +91,6 @@ public class CardsFragment extends Fragment implements CardsAdp.OnDeleteCardList
 
         API.delete(String.format("cards/%s",cardArrayList.get(position).getId()), Queue.getInstance(getContext()));
         removeItem(position);
-
     }
 
     public void removeItem(int position){
