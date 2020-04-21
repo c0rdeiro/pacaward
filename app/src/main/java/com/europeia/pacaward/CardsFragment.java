@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,11 +28,13 @@ public class CardsFragment extends Fragment implements CardsAdp.OnDeleteCardList
     private ArrayList<Card> cardArrayList = new ArrayList<>();
     private LinearLayoutManager linearLayoutManager;
     private FloatingActionButton addCard;
+    private TextView noCardstxt;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         Log.i(TAG, "onCreateView");
         View root = inflater.inflate(R.layout.fragment_cards, container, false);
         rvcards =(RecyclerView) root.findViewById(R.id.rv_cards);
+        noCardstxt = (TextView) root.findViewById(R.id.no_cardstxt);
         getCards();
 
         addCard =(FloatingActionButton) root.findViewById(R.id.addingcardbtn);
@@ -51,7 +54,13 @@ public class CardsFragment extends Fragment implements CardsAdp.OnDeleteCardList
         final VolleyCallback callback = new VolleyCallback() {
             @Override
             public void onSuccess(JSONObject result) {
-                onCards(result);
+                try {
+                    if(result.getInt("count") == 0)
+                        noCardstxt.setText("You have no cards.\nClick the plus sign to link a card.");
+                    else onCards(result);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
             @Override
             public void onError(String result) {
