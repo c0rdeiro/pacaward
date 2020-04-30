@@ -3,4 +3,9 @@
     <string name="nav_offers">Offers</string>
     <string name="nav_transactions">Transactions</string>
     <string name="nav_cards">Cards</string>
+    <string name="prompt_email">email</string>
+    <string name="prompt_password">password</string>
+    <string name="action_sign_in_short">Log In</string>
+    <string name="action_sign_in">Log in</string>
+    <string name="login_slogan">BE ONE OF US!</string>
 </resources>

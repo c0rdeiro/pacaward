@@ -1,7 +1,6 @@
 package com.europeia.pacaward;
 
 import android.util.Log;
-import android.view.textclassifier.TextLinks;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
