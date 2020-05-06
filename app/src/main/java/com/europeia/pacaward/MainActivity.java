@@ -8,7 +8,9 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 
 
 
@@ -18,10 +20,12 @@ public class MainActivity extends AppCompatActivity {
     private Button profileBtn;
     private BottomNavigationView bottomNavigationView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         bottomNavigationView = findViewById(R.id.navbar);
         bottomNavigationView.setItemIconTintList(null);
@@ -34,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
         profileBtn = findViewById(R.id.profilebtn);
     }
+
+
 
     private void checkIntent(){
         if(getIntent().getStringExtra("extra") != null) {
@@ -65,3 +71,4 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
+

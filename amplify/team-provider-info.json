@@ -1,0 +1,15 @@
+{
+    "pacaward": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-pacaward-pacaward-191036-authRole",
+            "UnauthRoleArn": "arn:aws:iam::126267724157:role/amplify-pacaward-pacaward-191036-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::126267724157:role/amplify-pacaward-pacaward-191036-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-pacaward-pacaward-191036-deployment",
+            "UnauthRoleName": "amplify-pacaward-pacaward-191036-unauthRole",
+            "StackName": "amplify-pacaward-pacaward-191036",
+            "StackId": "arn:aws:cloudformation:eu-west-1:126267724157:stack/amplify-pacaward-pacaward-191036/8f930f30-8e32-11ea-8289-0a79771fa9ee",
+            "AmplifyAppId": "dgj4oqp8sdkhk"
+        }
+    }
+}

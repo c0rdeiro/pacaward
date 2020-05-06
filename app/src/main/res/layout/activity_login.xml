@@ -55,7 +55,7 @@
                 android:background="@drawable/ic_mail"/>
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/emailinput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -94,7 +94,7 @@
                 />
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/passwordinput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -113,37 +113,37 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/login_card"
+    android:id="@+id/login_card"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_margin="70dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/password_card"
+    android:backgroundTint="@color/colorOnPrimary"
+    app:cardCornerRadius="30dp">
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="70dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password_card"
-        android:backgroundTint="@color/colorOnPrimary"
-        app:cardCornerRadius="30dp">
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/loginbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="64dp"
+            android:textSize="18dp"
+            android:text="@string/action_sign_in"
+            android:textColor="@color/colorAccent"
+            android:layout_centerInParent="true"
+            android:backgroundTint="@color/colorOnPrimary"
+            />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <Button
-                android:id="@+id/loginbtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginStart="48dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="48dp"
-                android:layout_marginBottom="64dp"
-                android:enabled="false"
-                android:text="@string/action_sign_in"
-                android:textColor="@color/colorAccent"
-                android:layout_centerInParent="true"
-                android:backgroundTint="@color/colorOnPrimary"
-                />
-
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
