@@ -1,5 +1,8 @@
 package com.europeia.pacaward;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -95,11 +99,24 @@ public class CardsFragment extends Fragment implements CardsAdp.OnDeleteCardList
     }
 
     @Override
-    public void onDeleteCardClick(int position) {
+    public void onDeleteCardClick(final int position) {
         Log.i(TAG, "onDeleteCardClick");
+        new AlertDialog.Builder(getContext())
+                .setTitle("Are you sure you want to delete this card?")
 
-        API.delete(String.format("cards/%s",cardArrayList.get(position).getId()), Queue.getInstance(getContext()));
-        removeItem(position);
+                // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        API.delete(String.format("cards/%s", cardArrayList.get(position).getId()), Queue.getInstance(getContext()));
+                        removeItem(position);
+                    }
+                })
+
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(R.string.cancel, null)
+                .show();
+
     }
 
     public void removeItem(int position){
@@ -110,4 +127,3 @@ public class CardsFragment extends Fragment implements CardsAdp.OnDeleteCardList
 
 
 }
-

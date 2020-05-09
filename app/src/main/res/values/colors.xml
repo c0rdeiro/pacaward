@@ -5,5 +5,6 @@
     <color name="colorOnPrimary">#F4E7D3</color>
     <color name="btnunselected">#8D9C99</color>
     <color name="transaction_loc">#979797</color>
+    <color name="btndelete">#CE3C30</color>
     <color name="card">#EFEEEE</color>
 </resources>

@@ -10,6 +10,11 @@
             "StackName": "amplify-pacaward-pacaward-191036",
             "StackId": "arn:aws:cloudformation:eu-west-1:126267724157:stack/amplify-pacaward-pacaward-191036/8f930f30-8e32-11ea-8289-0a79771fa9ee",
             "AmplifyAppId": "dgj4oqp8sdkhk"
+        },
+        "categories": {
+            "auth": {
+                "pacawardca02b313": {}
+            }
         }
     }
 }
