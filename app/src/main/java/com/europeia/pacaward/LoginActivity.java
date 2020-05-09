@@ -53,8 +53,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
+
         showSignIn();
-        
+
         IdentityManager.getDefaultIdentityManager().addSignInStateChangeListener(new SignInStateChangeListener() {
             @Override
             public void onUserSignedIn() {
@@ -69,7 +70,6 @@ public class LoginActivity extends AppCompatActivity {
                 showSignIn();
             }
         });
-
     }
     private void showSignIn() {
 
@@ -82,7 +82,6 @@ public class LoginActivity extends AppCompatActivity {
                                 .logoResId(R.drawable.ic_logo_transparent_small) // Change the logo
                                 .backgroundColor(Color.LTGRAY)
                                 .fontFamily("sans-serif-light")
-                                //.isBackgroundColorFullScreen(true)
                                 .canCancel(true)
                                 .build();
                 SignInUI signin = (SignInUI) AWSMobileClient.getInstance().getClient(LoginActivity.this, SignInUI.class);

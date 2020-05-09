@@ -55,10 +55,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_place, new OffersFragment()).commit();
         checkIntent();
 
-        Log.i(TAG, String.valueOf(IdentityManager.getDefaultIdentityManager().isUserSignedIn()) );
-        Log.i(TAG, "username:" + IdentityManager.getDefaultIdentityManager().getCachedUserID());
-        
-        //emailtxt.setText();
+
         profileBtn.setOnClickListener(profilebtnListener);
         logoutbtn.setOnClickListener(logoutbtnListener);
 
