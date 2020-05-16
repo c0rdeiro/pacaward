@@ -13,28 +13,29 @@
  * permissions and limitations under the License.
  */
 
-package aws;
+package apipacaward.model;
 
 
-@com.amazonaws.mobileconnectors.apigateway.annotation.Service(endpoint = "https://yyv8mzc5o9.execute-api.eu-west-1.amazonaws.com/pacaward")
-public interface ApiClient {
-
+public class ResponseSchema {
+    @com.google.gson.annotations.SerializedName("response")
+    private String response = null;
 
     /**
-     * A generic invoker to invoke any API Gateway endpoint.
-     * @param request
-     * @return ApiResponse
-     */
-    com.amazonaws.mobileconnectors.apigateway.ApiResponse execute(com.amazonaws.mobileconnectors.apigateway.ApiRequest request);
-    
-    /**
-     * 
-     * 
-     * @return void
-     */
-    @com.amazonaws.mobileconnectors.apigateway.annotation.Operation(path = "/users", method = "GET")
-    void getUsers();
+     * Gets response
+     *
+     * @return response
+     **/
+    public String getResponse() {
+        return response;
+    }
 
-    
+    /**
+     * Sets the value of response.
+     *
+     * @param response the new value
+     */
+    public void setResponse(String response) {
+        this.response = response;
+    }
+
 }
-

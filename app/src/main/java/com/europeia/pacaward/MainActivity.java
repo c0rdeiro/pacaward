@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "Main Actitvity";
@@ -62,16 +63,21 @@ public class MainActivity extends AppCompatActivity {
         CognitoUserPool userPool = new CognitoUserPool(this, AWSMobileClient.getInstance().getConfiguration());
         CognitoUser cognitoUser = userPool.getCurrentUser();
         cognitoUser.getDetailsInBackground(getDetailsHandler);
-
     }
 
 
+
     private GetDetailsHandler getDetailsHandler = new GetDetailsHandler() {
+
             @Override
             public void onSuccess(CognitoUserDetails cognitoUserDetails) {
                 Map userAtts = new HashMap();
                 userAtts = cognitoUserDetails.getAttributes().getAttributes();
                 emailtxt.setText(userAtts.get("email").toString());
+                if(AWS.doInvokeAPI("GET", "/users/"+userAtts.get("sub").toString()).length() == 0) {
+                    AWS.doInvokeAPI("POST", "/users/" + userAtts.get("sub").toString());
+                    Log.i(TAG, "onSuccess: new user added");
+                }
             }
 
 

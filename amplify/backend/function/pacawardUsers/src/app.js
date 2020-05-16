@@ -7,10 +7,7 @@ See the License for the specific language governing permissions and limitations 
 */
 
 
-/* Amplify Params - DO NOT EDIT
-	ENV
-	REGION
-Amplify Params - DO NOT EDIT */
+
 
 var express = require('express')
 var bodyParser = require('body-parser')
@@ -33,12 +30,12 @@ app.use(function(req, res, next) {
  * Example get method *
  **********************/
 
-app.get('/items', function(req, res) {
+app.get('/users', function(req, res) {
   // Add your code here
   res.json({success: 'get call succeed!', url: req.url});
 });
 
-app.get('/items/*', function(req, res) {
+app.get('/users/*', function(req, res) {
   // Add your code here
   res.json({success: 'get call succeed!', url: req.url});
 });
@@ -47,12 +44,12 @@ app.get('/items/*', function(req, res) {
 * Example post method *
 ****************************/
 
-app.post('/items', function(req, res) {
+app.post('/users', function(req, res) {
   // Add your code here
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
 
-app.post('/items/*', function(req, res) {
+app.post('/users/*', function(req, res) {
   // Add your code here
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
@@ -61,12 +58,12 @@ app.post('/items/*', function(req, res) {
 * Example put method *
 ****************************/
 
-app.put('/items', function(req, res) {
+app.put('/users', function(req, res) {
   // Add your code here
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
 
-app.put('/items/*', function(req, res) {
+app.put('/users/*', function(req, res) {
   // Add your code here
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
@@ -75,12 +72,12 @@ app.put('/items/*', function(req, res) {
 * Example delete method *
 ****************************/
 
-app.delete('/items', function(req, res) {
+app.delete('/users', function(req, res) {
   // Add your code here
   res.json({success: 'delete call succeed!', url: req.url});
 });
 
-app.delete('/items/*', function(req, res) {
+app.delete('/users/*', function(req, res) {
   // Add your code here
   res.json({success: 'delete call succeed!', url: req.url});
 });

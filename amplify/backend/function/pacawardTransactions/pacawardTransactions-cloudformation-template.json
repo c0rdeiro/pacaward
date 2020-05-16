@@ -33,12 +33,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"pacaward9f4ec1da",
+						"pacawardTransactions",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"pacaward9f4ec1da",
+									"pacawardTransactions",
 									"-",
 									{
 										"Ref": "env"
@@ -68,7 +68,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-pacaward-pacaward-191036-deployment",
-					"S3Key": "amplify-builds/pacaward9f4ec1da-384a6a63564c34616b74-build.zip"
+					"S3Key": "amplify-builds/pacawardTransactions-4b6e634e483261574a69-build.zip"
 				}
 			}
 		},
@@ -78,12 +78,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"pacawardLambdaRole31e0c356",
+						"pacawardLambdaRole6d1ff97a",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"pacawardLambdaRole31e0c356",
+									"pacawardLambdaRole6d1ff97a",
 									"-",
 									{
 										"Ref": "env"
