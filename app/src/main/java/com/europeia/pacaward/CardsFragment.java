@@ -45,7 +45,6 @@ public class CardsFragment extends Fragment implements CardsAdp.OnDeleteCardList
     private FloatingActionButton addCard;
     private TextView noCardstxt;
     private JSONArray resultCards;
-    private CognitoUser currentUser;
     private String userid;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -59,7 +58,7 @@ public class CardsFragment extends Fragment implements CardsAdp.OnDeleteCardList
         addCard.setOnClickListener(addCardListener);
 
         CognitoUserPool userPool = new CognitoUserPool(getContext(), AWSMobileClient.getInstance().getConfiguration());
-        currentUser = userPool.getCurrentUser();
+        CognitoUser currentUser = userPool.getCurrentUser();
         currentUser.getDetailsInBackground(getDetailsHandler);
 
 
@@ -76,7 +75,6 @@ public class CardsFragment extends Fragment implements CardsAdp.OnDeleteCardList
 
 
     private void handleResponse(RestResponse restResponse) {
-        Log.i(TAG, "cards from db = " + restResponse.getData().asString());
 
         try{
             JSONArray cards = new JSONArray(restResponse.getData().asString());

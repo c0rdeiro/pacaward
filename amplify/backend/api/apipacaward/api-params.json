@@ -18,14 +18,7 @@
             "name": "/transactions",
             "lambdaFunction": "pacawardTransactions",
             "privacy": {
-                "private": true,
-                "auth": [
-                    "/POST",
-                    "/GET",
-                    "/PUT",
-                    "/PATCH",
-                    "/DELETE"
-                ]
+                "open": true
             }
         }
     ],
@@ -43,7 +36,7 @@
         }
     ],
     "privacy": {
-        "auth": 1,
+        "auth": 0,
         "unauth": 0,
         "authRoleName": "amplify-pacaward-pacaward-191036-authRole",
         "unAuthRoleName": "amplify-pacaward-pacaward-191036-unauthRole"
@@ -73,5 +66,6 @@
                 "Arn"
             ]
         }
-    ]
+    ],
+    "uuid": "40489166"
 }
