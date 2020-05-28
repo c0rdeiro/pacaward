@@ -1,5 +1,6 @@
 package com.europeia.pacaward;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -14,12 +15,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
-import com.amazonaws.mobile.auth.core.IdentityManager;
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUser;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserDetails;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserPool;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.handlers.GetDetailsHandler;
+import com.amplifyframework.api.rest.RestOperation;
+import com.amplifyframework.api.rest.RestOptions;
+import com.amplifyframework.api.rest.RestResponse;
+import com.amplifyframework.core.Amplify;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.HashMap;
@@ -37,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private CardView logoutcard;
     private TextView emailtxt;
     private Button logoutbtn;
-
+    private CognitoUser currentUser;
+    private String userid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,46 +61,75 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_place, new OffersFragment()).commit();
         checkIntent();
 
-
         profileBtn.setOnClickListener(profilebtnListener);
         logoutbtn.setOnClickListener(logoutbtnListener);
 
         CognitoUserPool userPool = new CognitoUserPool(this, AWSMobileClient.getInstance().getConfiguration());
-        CognitoUser cognitoUser = userPool.getCurrentUser();
-        cognitoUser.getDetailsInBackground(getDetailsHandler);
+        currentUser = userPool.getCurrentUser();
+        currentUser.getDetailsInBackground(getDetailsHandler);
+
+
     }
 
+
+    private void handleUser(RestResponse getResponse, String userId) {
+        Log.i(TAG, "user id from db: "+ getResponse.getData().asString());
+        if(getResponse.getData().asString().equals("[]")){
+            // TODO : POST working as a get
+            RestOptions options = RestOptions.builder()
+                    .addPath("/users/"+ userId)
+                    .addBody("{}".getBytes())
+                    .build();
+
+            Amplify.API.post(options,
+                    response -> Log.i("MyAmplifyApp", "POST " + response.getData().asString()),
+                    error -> Log.e("MyAmplifyApp", "POST failed", error)
+            );
+
+        }
+    }
 
 
     private GetDetailsHandler getDetailsHandler = new GetDetailsHandler() {
 
-            @Override
-            public void onSuccess(CognitoUserDetails cognitoUserDetails) {
-                Map userAtts = new HashMap();
-                userAtts = cognitoUserDetails.getAttributes().getAttributes();
-                emailtxt.setText(userAtts.get("email").toString());
-                if(AWS.doInvokeAPI("GET", "/users/"+userAtts.get("sub").toString()).length() == 0) {
-                    AWS.doInvokeAPI("POST", "/users/" + userAtts.get("sub").toString());
-                    Log.i(TAG, "onSuccess: new user added");
-                }
-            }
+        @Override
+        public void onSuccess(CognitoUserDetails cognitoUserDetails) {
+            Map userAtts = new HashMap();
+            userAtts = cognitoUserDetails.getAttributes().getAttributes();
+            userid = userAtts.get("sub").toString();
+            Log.i(TAG, "ID: " + userid);
+            emailtxt.setText(userAtts.get("email").toString());
+            getUserFromDB();
 
+        }
+        @Override
+        public void onFailure(Exception exception) {
+            Log.e(TAG, "onFailure: ", exception);
+        }
+    };
 
-            @Override
-            public void onFailure(Exception exception) {
-                Log.e(TAG, "onFailure: ", exception);
-                // Getting the error here
-            }
-        };
+    private void getUserFromDB() {
+        RestOptions options = RestOptions.builder()
+                .addPath("/users/"+ userid)
+                .build();
+
+        Amplify.API.get("apipacaward",
+                options,
+                getResponse -> handleUser(getResponse, userid),
+                apiFailure -> Log.e("ApiQuickStart", apiFailure.getMessage(), apiFailure)
+        );
+    }
 
 
     private View.OnClickListener logoutbtnListener = new View.OnClickListener(){
         public void onClick(View view){
-            IdentityManager.getDefaultIdentityManager().signOut();
+            currentUser.signOut();
+            AWSMobileClient.getInstance().signOut();
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
         }
     };
 
-     private View.OnClickListener profilebtnListener = new View.OnClickListener() {
+    private View.OnClickListener profilebtnListener = new View.OnClickListener() {
 
         public void onClick(View v) {
 
@@ -124,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment selectedFragment = null;
-
             switch(item.getItemId()){
                 case R.id.nav_offers:
                     selectedFragment = new OffersFragment();
@@ -141,7 +174,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
     };
-
-
 }
 
