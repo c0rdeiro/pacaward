@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
@@ -51,4 +52,8 @@ dependencies {
     implementation 'com.amazonaws:aws-android-sdk-mobile-client:2.16.+'
     implementation 'com.amazonaws:aws-android-sdk-auth-userpools:2.16.+'
     implementation 'com.amazonaws:aws-android-sdk-auth-ui:2.16.+'
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+
+    implementation 'com.google.firebase:firebase-messaging:20.2.0'
+
 }

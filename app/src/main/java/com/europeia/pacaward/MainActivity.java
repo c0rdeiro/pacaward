@@ -1,6 +1,9 @@
 package com.europeia.pacaward;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -13,6 +16,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import com.amazonaws.mobile.client.AWSMobileClient;
@@ -20,11 +25,14 @@ import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUser;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserDetails;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserPool;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.handlers.GetDetailsHandler;
-import com.amplifyframework.api.rest.RestOperation;
 import com.amplifyframework.api.rest.RestOptions;
 import com.amplifyframework.api.rest.RestResponse;
 import com.amplifyframework.core.Amplify;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
     private Button logoutbtn;
     private CognitoUser currentUser;
     private String userid;
+    public static final String CHANEL_ID = "pacaward";
+    private static final String CHANEL_NAME = "pacaward";
+    private static final String CHANEL_DESC = "pacaward notifications";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,9 +79,32 @@ public class MainActivity extends AppCompatActivity {
         CognitoUserPool userPool = new CognitoUserPool(this, AWSMobileClient.getInstance().getConfiguration());
         currentUser = userPool.getCurrentUser();
         currentUser.getDetailsInBackground(getDetailsHandler);
+        
+        initiateFirebase();
 
 
     }
+
+
+
+//    private void handleDeviceToken(String token) {
+//        RestOptions options = new RestOptions.Builder()
+//                .addPath("/devices/"+userid+'/'+token)
+//                .build();
+//        Amplify.API.get(options,
+//                response -> insertNewDevice(),
+//                error -> Log.e("MyAmplifyApp", "GET failed", error));
+//
+//        RestOptions options = new RestOptions.Builder()
+//                .addPath("/devices/"+userid+'/'+token)
+//                .addBody("{}".getBytes())
+//                .build();
+//        Amplify.API.post(options,
+//                postDevice -> Log.i(TAG, "insertNewDevice: "+ postDevice.getData().asString()),
+//                error -> Log.e("POSTUSER", "GET failed", error));
+//
+//
+//    }
 
 
     private void handleUser(RestResponse getResponse, String userId) {
@@ -82,8 +117,8 @@ public class MainActivity extends AppCompatActivity {
                     .build();
 
             Amplify.API.post(options,
-                    response -> Log.i("MyAmplifyApp", "POST " + response.getData().asString()),
-                    error -> Log.e("MyAmplifyApp", "POST failed", error)
+                    postuser -> Log.i("POSTUSER", "POST " + postuser.getData().asString()),
+                    error -> Log.e("POSTUSER", "POST failed", error)
             );
 
         }
@@ -97,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
             Map userAtts = new HashMap();
             userAtts = cognitoUserDetails.getAttributes().getAttributes();
             userid = userAtts.get("sub").toString();
-            Log.i(TAG, "ID: " + userid);
             emailtxt.setText(userAtts.get("email").toString());
             getUserFromDB();
 
@@ -116,10 +150,35 @@ public class MainActivity extends AppCompatActivity {
         Amplify.API.get("apipacaward",
                 options,
                 getResponse -> handleUser(getResponse, userid),
-                apiFailure -> Log.e("ApiQuickStart", apiFailure.getMessage(), apiFailure)
+                apiFailure -> Log.e("GETUSER", apiFailure.getMessage(), apiFailure)
         );
     }
 
+
+    private void initiateFirebase() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel(CHANEL_ID, CHANEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription(CHANEL_DESC);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if(task.isSuccessful()){
+                            String token = task.getResult().getToken();
+                            Log.i(TAG, "TOKEN: " + token);
+
+                            // handleDeviceToken(token);
+
+                        }else{
+                            task.getException().getMessage();
+                        }
+
+                    }
+                });
+    }
 
     private View.OnClickListener logoutbtnListener = new View.OnClickListener(){
         public void onClick(View view){
@@ -174,5 +233,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
     };
+
+
+
 }
 

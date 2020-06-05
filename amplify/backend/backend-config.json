@@ -22,6 +22,11 @@
             "build": true,
             "providerPlugin": "awscloudformation",
             "service": "Lambda"
+        },
+        "pacawardDevices": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda"
         }
     },
     "api": {
@@ -48,6 +53,14 @@
                 {
                     "category": "function",
                     "resourceName": "pacawardTransactions",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "pacawardDevices",
                     "attributes": [
                         "Name",
                         "Arn"

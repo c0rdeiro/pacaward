@@ -20,6 +20,13 @@
             "privacy": {
                 "open": true
             }
+        },
+        {
+            "name": "/devices",
+            "lambdaFunction": "pacawardDevices",
+            "privacy": {
+                "open": true
+            }
         }
     ],
     "resourceName": "apipacaward",
@@ -33,6 +40,9 @@
         },
         {
             "lambdaFunction": "pacawardTransactions"
+        },
+        {
+            "lambdaFunction": "pacawardDevices"
         }
     ],
     "privacy": {
@@ -65,7 +75,15 @@
                 "Name",
                 "Arn"
             ]
+        },
+        {
+            "category": "function",
+            "resourceName": "pacawardDevices",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
         }
     ],
-    "uuid": "40489166"
+    "uuid": "6d105e98"
 }

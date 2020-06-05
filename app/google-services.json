@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "275324296665",
+    "firebase_url": "https://pacawardproject.firebaseio.com",
+    "project_id": "pacawardproject",
+    "storage_bucket": "pacawardproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:275324296665:android:6372f9a261c28c9ebacdc8",
+        "android_client_info": {
+          "package_name": "com.europeia.pacaward"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "275324296665-1hmao5me64bkkhp5gaa3t4ep06lrtd9l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.europeia.pacaward",
+            "certificate_hash": "da1bcb564c26e949de5cc7abba86709e579d067a"
+          }
+        },
+        {
+          "client_id": "275324296665-qdke35f3r2u0c9qpk92t66r0mgq1l0te.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYas0xZpuZy_yAaVJJo9s0L1JJGzp5S_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "275324296665-qdke35f3r2u0c9qpk92t66r0mgq1l0te.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
