@@ -77,20 +77,10 @@ public class MainActivity extends AppCompatActivity {
         CognitoUserPool userPool = new CognitoUserPool(this, AWSMobileClient.getInstance().getConfiguration());
         currentUser = userPool.getCurrentUser();
         currentUser.getDetailsInBackground(getDetailsHandler);
-        
-        initiateFirebase();
-
-
     }
 
-
-
-
-
     private void handleUser(RestResponse getResponse, String userId) {
-        Log.i(TAG, "user id from db: "+ getResponse.getData().asString());
         if(getResponse.getData().asString().equals("[]")){
-            Log.i(TAG, "handleUser: "+ userId);
             RestOptions options = RestOptions.builder()
                     .addPath("/users/"+ userId)
                     .addBody("{}".getBytes())
@@ -102,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
             );
 
         }
+        initiateFirebase();
     }
 
 
@@ -118,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         }
         @Override
         public void onFailure(Exception exception) {
-            Log.e(TAG, "onFailure: ", exception);
+            Log.e("GET USER", "onFailure: ", exception);
         }
     };
 
@@ -162,17 +153,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void handleDeviceToken(String token) {
-        RestOptions getDevice = RestOptions.builder()
-                .addPath("/devices/"+userid+'/'+token)
-                .build();
-        Amplify.API.get(getDevice,
-                response -> insertNewDevice(response, token),
-                error -> Log.e("MyAmplifyApp", "GET failed", error));
+        Log.i(TAG, "/devices/"+userid+'/'+token);
+        if(userid != null) {
+            RestOptions getDevice = RestOptions.builder()
+                    .addPath("/devices/" + userid + '/' + token)
+                    .build();
+            Amplify.API.get(getDevice,
+                    response -> insertNewDevice(response, token),
+                    error -> Log.e("MyAmplifyApp", "GET failed", error));
+        }
 
     }
 
     private void insertNewDevice(RestResponse response, String token) {
-        Log.i(TAG, "wadu: "+ response.getData().asString());
         if(response.getData().asString().equals("[]")) {
             RestOptions options = RestOptions.builder()
                     .addPath("/devices/" + userid + '/' + token)
