@@ -27,6 +27,13 @@
             "privacy": {
                 "open": true
             }
+        },
+        {
+            "name": "/notifications",
+            "lambdaFunction": "pacawardNotifications",
+            "privacy": {
+                "open": true
+            }
         }
     ],
     "resourceName": "apipacaward",
@@ -43,6 +50,9 @@
         },
         {
             "lambdaFunction": "pacawardDevices"
+        },
+        {
+            "lambdaFunction": "pacawardNotifications"
         }
     ],
     "privacy": {
@@ -83,7 +93,15 @@
                 "Name",
                 "Arn"
             ]
+        },
+        {
+            "category": "function",
+            "resourceName": "pacawardNotifications",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
         }
     ],
-    "uuid": "6d105e98"
+    "uuid": "b9ace25d"
 }

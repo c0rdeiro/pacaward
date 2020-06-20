@@ -16,8 +16,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import com.amazonaws.mobile.client.AWSMobileClient;
@@ -87,30 +85,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-//    private void handleDeviceToken(String token) {
-//        RestOptions options = new RestOptions.Builder()
-//                .addPath("/devices/"+userid+'/'+token)
-//                .build();
-//        Amplify.API.get(options,
-//                response -> insertNewDevice(),
-//                error -> Log.e("MyAmplifyApp", "GET failed", error));
-//
-//        RestOptions options = new RestOptions.Builder()
-//                .addPath("/devices/"+userid+'/'+token)
-//                .addBody("{}".getBytes())
-//                .build();
-//        Amplify.API.post(options,
-//                postDevice -> Log.i(TAG, "insertNewDevice: "+ postDevice.getData().asString()),
-//                error -> Log.e("POSTUSER", "GET failed", error));
-//
-//
-//    }
 
 
     private void handleUser(RestResponse getResponse, String userId) {
         Log.i(TAG, "user id from db: "+ getResponse.getData().asString());
         if(getResponse.getData().asString().equals("[]")){
-            // TODO : POST working as a get
+            Log.i(TAG, "handleUser: "+ userId);
             RestOptions options = RestOptions.builder()
                     .addPath("/users/"+ userId)
                     .addBody("{}".getBytes())
@@ -170,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
                             String token = task.getResult().getToken();
                             Log.i(TAG, "TOKEN: " + token);
 
-                            // handleDeviceToken(token);
+                            handleDeviceToken(token);
 
                         }else{
                             task.getException().getMessage();
@@ -180,11 +160,41 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+
+    private void handleDeviceToken(String token) {
+        RestOptions getDevice = RestOptions.builder()
+                .addPath("/devices/"+userid+'/'+token)
+                .build();
+        Amplify.API.get(getDevice,
+                response -> insertNewDevice(response, token),
+                error -> Log.e("MyAmplifyApp", "GET failed", error));
+
+    }
+
+    private void insertNewDevice(RestResponse response, String token) {
+        Log.i(TAG, "wadu: "+ response.getData().asString());
+        if(response.getData().asString().equals("[]")) {
+            RestOptions options = RestOptions.builder()
+                    .addPath("/devices/" + userid + '/' + token)
+                    .addBody("{}".getBytes())
+                    .build();
+            Amplify.API.post(options,
+                    postDevice -> Log.i(TAG, "insertNewDevice: " + postDevice.getData().asString()),
+                    error -> Log.e("POSTUSER", "GET failed", error));
+        }
+
+    }
+
+
     private View.OnClickListener logoutbtnListener = new View.OnClickListener(){
         public void onClick(View view){
             currentUser.signOut();
-            AWSMobileClient.getInstance().signOut();
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            AWSMobileClient mobileClient = (AWSMobileClient) Amplify.Auth.getPlugin("awsCognitoAuthPlugin").getEscapeHatch();
+            mobileClient.getInstance().signOut();
+            Intent loginscreen = new Intent(MainActivity.this, LoginActivity.class);
+            (MainActivity.this).finish();
+            loginscreen.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(loginscreen);
         }
     };
 

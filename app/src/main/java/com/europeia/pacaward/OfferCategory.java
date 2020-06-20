@@ -2,7 +2,7 @@ package com.europeia.pacaward;
 
 import java.util.ArrayList;
 
-class OfferCategory {
+public class OfferCategory {
 
         private ArrayList<Offer> offers;
         private String categoryName;
