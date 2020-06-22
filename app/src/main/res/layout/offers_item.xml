@@ -3,7 +3,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="3dp">
+    android:layout_margin="3dp"
+    android:clickable="true">
 
 
 
@@ -37,7 +38,7 @@
                 android:autoSizeMaxTextSize="15sp"
                 android:autoSizeMinTextSize="10sp"
                 android:autoSizeTextType="uniform"
-                android:text="Brand Name"
+                android:text="@string/sampleBrand"
                 android:textColor="#2E5A6A" />
 
             <TextView
@@ -51,7 +52,7 @@
                 android:autoSizeMaxTextSize="12sp"
                 android:autoSizeMinTextSize="8sp"
                 android:autoSizeTextType="uniform"
-                android:text="10% batata"
+                android:text="@string/sampleOfferTitle"
                 android:textColor="#2E5A6A" />
 
 

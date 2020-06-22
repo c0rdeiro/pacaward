@@ -22,6 +22,8 @@ public class OfferCategory {
         }
 
 
+
+
         public String getCategoryName() {
                 return categoryName;
         }

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
+
 public class OffersFragment extends Fragment {
 
     private static final String TAG = "Offers Fragment";
@@ -62,7 +63,7 @@ public class OffersFragment extends Fragment {
             JSONArray jsonArray = obj.getJSONArray("items");
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject object = jsonArray.getJSONObject(i);
-                offerArrayList.add(new Offer(object.getString("brandName"), object.getString("name"), object.getString("brandLogoURL")));
+                offerArrayList.add(new Offer(object.getString("id"), object.getString("brandName"), object.getString("name"), object.getString("brandLogoURL")));
                 brandIds.add(object.getString("brandId"));
             }
         } catch (
@@ -123,9 +124,11 @@ public class OffersFragment extends Fragment {
             offersPerCategory.add(new OfferCategory(catoffer, cat));
         }
 
-        adapterGroup = new OffersGroupAdp(getActivity(), offersPerCategory);
+        adapterGroup = new OffersGroupAdp(getActivity(), offersPerCategory, getContext());
         layoutManagerGroup = new LinearLayoutManager(getContext());
         rvgroup.setLayoutManager(layoutManagerGroup);
         rvgroup.setAdapter(adapterGroup);
+
+
     }
 }

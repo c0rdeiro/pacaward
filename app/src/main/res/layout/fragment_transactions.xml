@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.chauthai.overscroll.RecyclerViewBouncy
         android:id="@+id/rv_transactions"
         android:layout_width="wrap_content"
         android:layout_height="0dp"

@@ -1,16 +1,20 @@
 package com.europeia.pacaward;
 
-public class Offer {
+import java.io.Serializable;
+
+public class Offer implements Serializable {
 
     private String offerCategory;
+    private String id;
     private String brandName;
-    private String description;
+    private String title;
     private String imageUrl;
 
 
-    public Offer(String brandName, String description, String imageUrl) {
+    public Offer(String id, String brandName, String title, String imageUrl) {
+        this.id = id;
         this.brandName = brandName;
-        this.description = description;
+        this.title = title;
         this.imageUrl = imageUrl;
     }
 
@@ -22,13 +26,13 @@ public class Offer {
     public void setOfferCategory(String offerCategory) {
         this.offerCategory = offerCategory;
     }
-
+    public String getId(){return id;}
     public String getBrandName() {
         return brandName;
     }
 
-    public String getDescription() {
-        return description;
+    public String getTitle() {
+        return title;
     }
     public String getImageUrl() {
         return imageUrl;

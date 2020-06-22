@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="380dp"
+        android:layout_height="500dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_marginBottom="150dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="2dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/detailedimg"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/profileicon"
+                android:layout_margin="15dp"
+                />
+
+            <TextView
+                android:id="@+id/detailedtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/detailedimg"
+                android:layout_marginTop="80dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="20sp"
+                android:textColor="@color/colorAccent"
+                android:text="@string/sampleBrand"/>
+
+            <Button
+                android:id="@+id/closeoffer"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="15dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_close_black_24dp"
+                android:backgroundTint="@color/colorAccent"/>
+
+            <TextView
+                android:id="@+id/detailedbrand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sampleBrand"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:layout_below="@+id/detailedimg"
+                android:layout_marginLeft="15dp"/>
+
+            <View
+                android:id="@+id/detailedline"
+                android:layout_width="350dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/colorAccent"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/detailedbrand"/>
+
+            <ImageView
+                android:id="@+id/locationic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_location"
+                android:layout_marginTop="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@id/detailedline"
+
+                />
+            <TextView
+                android:id="@+id/detailedlocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sampleDescription"
+                android:textSize="18sp"
+                android:textColor="@color/colorAccent"
+                android:layout_below="@+id/detailedline"
+                android:layout_toRightOf="@+id/locationic"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="20dp"/>
+
+
+
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

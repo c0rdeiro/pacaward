@@ -14,4 +14,7 @@
     <string name="logouttxt">Log out</string>
     <string name="emailplaceholder">example@email.com</string>
     <string name="noaccountonlogin">Create new account</string>
+    <string name="sampleBrand">Sample Brand</string>
+    <string name="sampleOfferTitle">Offer title</string>
+    <string name="sampleDescription">This weekend every Sony product has a discount of 60%.  Don\'t miss this opportunity!</string>
 </resources>

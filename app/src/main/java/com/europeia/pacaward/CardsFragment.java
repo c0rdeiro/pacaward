@@ -164,7 +164,7 @@ public class CardsFragment extends Fragment implements CardsAdp.OnDeleteCardList
                         API.delete(String.format("cards/%s", selectedCardID), Queue.getInstance(getContext()));
                         removeItem(position);
 
-                        // TODO: remove card id from db
+
                         Log.i(TAG, "delete: "+ "/cards/"+userid+"/"+selectedCardID );
                         RestOptions deleteCard = RestOptions.builder()
                                 .addPath("/cards/"+userid+"/"+selectedCardID)
