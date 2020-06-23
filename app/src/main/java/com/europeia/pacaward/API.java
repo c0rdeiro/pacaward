@@ -1,5 +1,6 @@
 package com.europeia.pacaward;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -19,9 +20,9 @@ class API {
     private static String url = "https://api.fidel.uk/v1/%s/";
 
 
-    static void call(String endpoint, int method, Queue queue, final VolleyCallback callback) {
+    static void call(Context context, String endpoint, Queue queue, final VolleyCallback callback) {
         Log.i(TAG, "call");
-        JsonObjectRequest req = new JsonObjectRequest(method, String.format(url, endpoint), null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, String.format(url, endpoint), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -40,14 +41,14 @@ class API {
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", "application/json");
-                headers.put("Fidel-Key", "sk_test_a79c137a-3fe7-4e74-8d21-f47f1108806f");
+                headers.put("Fidel-Key", context.getResources().getString(R.string.fidelkey));
                 return headers;
             }
         };
         queue.addToRequestQueue(req);
     }
 
-    static void delete(String endpoint, Queue queue) {
+    static void delete(Context context, String endpoint, Queue queue) {
         StringRequest req = new StringRequest(Request.Method.DELETE, String.format(url, endpoint),
                 new Response.Listener<String>() {
                     @Override
@@ -67,7 +68,7 @@ class API {
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", "application/json");
-                headers.put("Fidel-Key", "sk_test_a79c137a-3fe7-4e74-8d21-f47f1108806f");
+                headers.put("Fidel-Key", context.getResources().getString(R.string.fidelkey));
                 return headers;
             }
         };

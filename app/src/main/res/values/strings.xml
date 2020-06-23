@@ -17,4 +17,6 @@
     <string name="sampleBrand">Sample Brand</string>
     <string name="sampleOfferTitle">Offer title</string>
     <string name="sampleDescription">This weekend every Sony product has a discount of 60%.  Don\'t miss this opportunity!</string>
+    <string name="sampleLocation">40 Albert Road N520DU \n London </string>
+
 </resources>

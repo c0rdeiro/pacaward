@@ -13,7 +13,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
 
         android:backgroundTint="@color/colorPrimary"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="90dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="2dp">
 
@@ -39,7 +39,7 @@
                 android:layout_marginLeft="10dp"
                 android:textSize="20sp"
                 android:textColor="@color/colorAccent"
-                android:text="@string/sampleBrand"/>
+                android:text="@string/sampleOfferTitle"/>
 
             <Button
                 android:id="@+id/closeoffer"
@@ -74,39 +74,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_location"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="110dp"
                 android:layout_marginLeft="10dp"
                 android:layout_below="@id/detailedline"
 
                 />
             <TextView
                 android:id="@+id/detailedlocation"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="@string/sampleDescription"
+                android:text="@string/sampleLocation"
                 android:textSize="18sp"
                 android:textColor="@color/colorAccent"
                 android:layout_below="@+id/detailedline"
                 android:layout_toRightOf="@+id/locationic"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="90dp"
                 android:layout_marginLeft="20dp"/>
 
 
-
-
+            <fragment
+                    android:id="@+id/map"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_toRightOf="@+id/detailedlocation"
+                    android:layout_below="@+id/detailedline"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                   />
 
         </RelativeLayout>
-
-
-
-
-
-
     </androidx.cardview.widget.CardView>
-
-
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

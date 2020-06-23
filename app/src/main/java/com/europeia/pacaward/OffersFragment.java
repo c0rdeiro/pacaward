@@ -55,7 +55,7 @@ public class OffersFragment extends Fragment {
                 Log.e("getOffers",result);
             }
         };
-        API.call("offers",0, Queue.getInstance(getContext()), callback);
+        API.call(getContext(), "offers", Queue.getInstance(getContext()), callback);
     }
     private void onOffers(JSONObject obj) {
         Log.d(TAG, "onoffers");
@@ -87,7 +87,7 @@ public class OffersFragment extends Fragment {
             }
         };
         for (String id : brandIds) {
-            API.call("brands/"+ id,0, Queue.getInstance(getContext()), callback);
+            API.call(getContext(), "brands/"+ id, Queue.getInstance(getContext()), callback);
         }
     }
 

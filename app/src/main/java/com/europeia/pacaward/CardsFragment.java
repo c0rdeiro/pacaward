@@ -100,7 +100,7 @@ public class CardsFragment extends Fragment implements CardsAdp.OnDeleteCardList
                 try{
                     for(int i = 0; i < cards.length(); i++){
                         JSONObject cardObject = cards.getJSONObject(i);
-                        API.call("cards/"+cardObject.get("idCard"),0, Queue.getInstance(getContext()), callback);
+                        API.call(getContext(),"cards/"+cardObject.get("idCard"), Queue.getInstance(getContext()), callback);
                     }
                 }
                 catch (JSONException e){
@@ -161,7 +161,7 @@ public class CardsFragment extends Fragment implements CardsAdp.OnDeleteCardList
                 .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         String selectedCardID = cardArrayList.get(position).getId();
-                        API.delete(String.format("cards/%s", selectedCardID), Queue.getInstance(getContext()));
+                        API.delete(getContext(), String.format("cards/%s", selectedCardID), Queue.getInstance(getContext()));
                         removeItem(position);
 
 

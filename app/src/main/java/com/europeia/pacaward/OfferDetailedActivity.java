@@ -1,8 +1,7 @@
 package com.europeia.pacaward;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,12 +10,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class OfferDetailedActivity extends AppCompatActivity {
+public class OfferDetailedActivity extends FragmentActivity implements OnMapReadyCallback  {
 
     private Offer offer;
     private ImageView img;
@@ -24,6 +28,8 @@ public class OfferDetailedActivity extends AppCompatActivity {
     private TextView brand;
     private TextView location;
     private Button close;
+    private GoogleMap mMap;
+    private LatLng shop;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +42,7 @@ public class OfferDetailedActivity extends AppCompatActivity {
         close = findViewById(R.id.closeoffer);
         close.setOnClickListener(closelistener);
         offer = (Offer) getIntent().getSerializableExtra("offer");
+
 
         Glide.with(this).asBitmap().load(offer.getImageUrl()).into(img);
         title.setText(offer.getTitle());
@@ -56,7 +63,7 @@ public class OfferDetailedActivity extends AppCompatActivity {
             }
         };
         String endpoint = String.format("offers/%s/locations", id);
-        API.call(endpoint,0, Queue.getInstance(this), callback);
+        API.call(this, endpoint, Queue.getInstance(this), callback);
     }
 
     private void onLocations(JSONObject result) {
@@ -65,6 +72,8 @@ public class OfferDetailedActivity extends AppCompatActivity {
 
             String locationS = String.format("%s %s \n %s", obj.get("address"), obj.get("postcode"), obj.get("city"));
             location.setText(locationS);
+            JSONObject coordinates = obj.getJSONObject("geolocation");
+            setLatLng(coordinates.getDouble("latitude"), coordinates.getDouble("longitude"));
 
         } catch (
                 JSONException e) {
@@ -72,6 +81,25 @@ public class OfferDetailedActivity extends AppCompatActivity {
         }
     }
 
+    private void setLatLng(Double lat, Double lng) {
+        shop = new LatLng(lat, lng);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+
+
+        mMap.addMarker(new MarkerOptions().position(shop));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(shop, 15));
+
+    }
 
     private View.OnClickListener closelistener = new View.OnClickListener() {
         @Override
@@ -80,4 +108,6 @@ public class OfferDetailedActivity extends AppCompatActivity {
 
         }
     };
+
+
 }

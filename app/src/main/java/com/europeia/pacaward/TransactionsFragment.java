@@ -81,7 +81,7 @@ public class TransactionsFragment extends Fragment {
                 try{
                     for(int i = 0; i < transactions.length(); i++){
                         JSONObject transactionObject = transactions.getJSONObject(i);
-                        API.call("transactions/"+transactionObject.get("idTransaction"),0, Queue.getInstance(getContext()), callback);
+                        API.call(getContext(), "transactions/"+transactionObject.get("idTransaction"),Queue.getInstance(getContext()), callback);
                     }
                 }
                 catch (JSONException e){
