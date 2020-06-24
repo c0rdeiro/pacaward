@@ -97,6 +97,7 @@ public class OfferDetailedActivity extends FragmentActivity implements OnMapRead
 
 
         mMap.addMarker(new MarkerOptions().position(shop));
+        Log.i("MAPPY", shop.toString());
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(shop, 15));
 
     }

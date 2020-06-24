@@ -32,8 +32,8 @@ public class FidelSDKActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-        Fidel.programId = "dcf206fa-eeda-4e1d-b14d-0fd2f3bc7964";
-        Fidel.apiKey = "pk_test_658d96a9-ea47-4aa2-bedc-acdd7bfa9057";
+        Fidel.programId = "2df92800-6a3f-4bf2-b463-3ca0f1909511";
+        Fidel.apiKey = "pk_test_16ae1e1d-4db5-4e21-bb0e-b5f8e8ca0a69";
         Fidel.companyName = "pacaward";
         Fidel.country = Fidel.Country.UNITED_KINGDOM;
         Fidel.present(FidelSDKActivity.this);

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="mapkey" translatable="false">AIzaSyBWNrtdIXuumFShQEPRr7GKYxQvzFWoIeA</string>
-    <string name="fidelkey" translatable="false">sk_test_a79c137a-3fe7-4e74-8d21-f47f1108806f</string>
+    <string name="fidelkey" translatable="false">sk_test_6c933a6f-4db4-42bb-a5ee-aba664d07512</string>
+    <string name="fidelsdk" translatable="false">pk_test_16ae1e1d-4db5-4e21-bb0e-b5f8e8ca0a69</string>
 </resources>

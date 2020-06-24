@@ -41,7 +41,7 @@ class API {
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", "application/json");
-                headers.put("Fidel-Key", context.getResources().getString(R.string.fidelkey));
+                headers.put("Fidel-Key", "sk_test_6c933a6f-4db4-42bb-a5ee-aba664d07512");
                 return headers;
             }
         };
@@ -68,7 +68,7 @@ class API {
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", "application/json");
-                headers.put("Fidel-Key", context.getResources().getString(R.string.fidelkey));
+                headers.put("Fidel-Key", "sk_test_6c933a6f-4db4-42bb-a5ee-aba664d07512");
                 return headers;
             }
         };
